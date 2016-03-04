@@ -20,9 +20,10 @@ braces={
 put=s=>out.textContent+=s
 getc=_=>ini<inp.value.length?inp.value.charCodeAt(ini++):-1
 commands={
-  "\0":x=>cur.push(cur.length),
-  "\1":x=>cur=cur==stack1?stack2:stack1,
-  "{":x=>cur=cur[cur.length-1].pop?cur[cur.length-1]:[cur[cur.length-1]],
+	"\0":x=>cur.push(cur.length),
+	"\1":x=>cur=cur==stack1?stack2:stack1,
+	"{":x=>cur=cur[cur.length-1].pop?cur[cur.length-1]:[cur[cur.length-1]],
+	"}":x=>{/*TODO: set cur to parent stack or stay if cur is parent stack*/},
 	"%":x=>cur.pop(),
 	"$":x=>cur.push(cur.pick(0)),
 	"^":x=>cur.push(cur.pick(1)),
