@@ -44,7 +44,7 @@ commands={
 	"<":x=>cur.push(-(cur.pop()>cur.pop())),
 	">":x=>cur.push(-(cur.pop()<cur.pop())),
 	"'":x=>cur.push(code.charCodeAt(++ip)),
-	'"':x=>{for(i=0;code[++ip]!='"';i++)cur[cur.length-1].push(code.charCodeAt(ip));cur.push(i)},
+	'"':x=>{cur.push([]);for(i=0;code[++ip]!='"';i++)cur[cur.length-1].push(code.charCodeAt(ip));cur.push(i)},
 	".":x=>put(cur.pop()),
 	",":x=>put(String.fromCharCode(cur.pop())),
 	"`":x=>cur.push(getc()),
