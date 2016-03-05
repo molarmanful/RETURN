@@ -51,7 +51,7 @@ commands={
 	"'":x=>cur.push(code.charCodeAt(++ip)),
 	'"':x=>{cur.push([]);for(;code[++ip]!='"';)cur[cur.length-1].unshift(code.charCodeAt(ip))},
 	".":x=>put(cur.pop()),
-	",":x=>put(String.fromCharCode(...cur.pop().pop?cur:[cur])),
+	",":x=>put(String.fromCharCode(...(x=cur.pop()).pop?cur:[cur])),
 	"`":x=>cur.push(getc()),
 	":":x=>vars[cur.pop()]=cur.pop(),
 	";":x=>cur.push(vars[cur.pop()]),
