@@ -26,7 +26,7 @@ commands={
 	"\2":x=>cur=cur.reverse(),
 	"\3":x=>cur=[],
 	"¬":x=>math.flatten(cur),
-	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:[cur[x=cur.length-1]],nest.push(x)),
+	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:(cur[cur.length-1]=[cur[x=cur.length-1]]),nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
 	"$":x=>cur.push(cur.pick(0)),
@@ -62,18 +62,19 @@ commands={
 	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
 	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>ret.push(ip),ip=op)
 }
-eval=_=>{
-	c=code[ip]
-	if(commands[c])commands[c]();
-	else if(/\d/.test(c)){num=code.substring(ip).match(/\d+/)[0];cur.push(+num);ip+=num.length;return}
-	else if(/\s/.test(c)){ip+=code.substring(ip).match(/\s+/)[0].length;return}
-	else cur.push(c);ip++
-	console.log(`Stack1: ${JSON.stringify(stack1)}
+log=_=>console.log(`Command: ${c}
+Stack1: ${JSON.stringify(stack1)}
 Stack2: ${JSON.stringify(stack2)}
 Current Stack: ${JSON.stringify(cur)}
 Nest Indices: ${nest}
 Variables: ${JSON.stringify(vars)}
 Return Stack: ${JSON.stringify(ret)}`)
+eval=_=>{
+	c=code[ip]
+	if(commands[c])commands[c]();
+	else if(/\d/.test(c)){c=num=code.substring(ip).match(/\d+/)[0];cur.push(+num);ip+=num.length;log();return}
+	else if(/\s/.test(c)){ip+=(c=code.substring(ip).match(/\s+/)[0]).length;log();return}
+	else cur.push(c);ip++;log()
 }
 init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
 run=_=>{init();for(;ip<code.length;)eval()}
