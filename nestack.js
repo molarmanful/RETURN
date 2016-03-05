@@ -19,7 +19,7 @@ braces={
 	"[":matching_brace
 }
 put=s=>out.textContent+=s
-getc=_=>ini<inp.value.length?inp.value.charCodeAt(ini++):-1
+getc=_=>ini<inp.value.length?inp.value.codePointAt(ini++):-1
 commands={
 	"\0":x=>cur.push(cur.length),
 	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
@@ -48,10 +48,10 @@ commands={
 	"¤":x=>math.sign(cur.pop()),
 	"<":x=>cur.push(-(cur.pop()>cur.pop())),
 	">":x=>cur.push(-(cur.pop()<cur.pop())),
-	"'":x=>cur.push(code.charCodeAt(++ip)),
-	'"':x=>{cur.push([]);for(;code[++ip]!='"';)cur[cur.length-1].push(code.charCodeAt(ip))},
+	"'":x=>cur.push(code.codePointAt(++ip)),
+	'"':x=>{cur.push([]);for(;code[++ip]!='"';)cur[cur.length-1].push(code.codePointAt(ip))},
 	".":x=>put(cur.pop()),
-	",":x=>put(String.fromCharCode(...(x=cur.pop()).pop?x:[x])),
+	",":x=>put(String.fromCodePoint(...(x=cur.pop()).pop?x:[x])),
 	"`":x=>cur.push(getc()),
 	":":x=>vars[cur.pop()]=cur.pop(),
 	";":x=>cur.push(vars[cur.pop()]),
