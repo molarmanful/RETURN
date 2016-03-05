@@ -1,15 +1,15 @@
-code=""
+code=nsc.value
 ahead=[]
 ip=0
-stack1=[],stack2=[],cur=stack1
+stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[]
 ret=[]
 vars={}
 ini=0
 Array.prototype.pick=function(n){return this[this.length-n-1]}
 seek=c=>(!ahead[ip]&&(ahead[ip]=ip+code.slice(ip).indexOf(c)),ahead[ip])
 matching_brace=_=>{
-	if(!ahead[start]){
-		for(start=ip;ip<code.length;){c=code[++ip];if(c==']')break;if(braces[c])ip=braces[c]()}ahead[start]=ip
+	if(!ahead[start=ip]){
+		for(;ip<code.length;){c=code[++ip];if(c==']')break;if(braces[c])ip=braces[c]()}ahead[start]=ip
 	}return ahead[start]
 }
 braces={
@@ -21,9 +21,11 @@ put=s=>out.textContent+=s
 getc=_=>ini<inp.value.length?inp.value.charCodeAt(ini++):-1
 commands={
 	"\0":x=>cur.push(cur.length),
-	"\1":x=>cur=cur==stack1?stack2:stack1,
-	"{":x=>cur=cur[cur.length-1].pop?cur[cur.length-1]:[cur[cur.length-1]],
-	"}":x=>{/*TODO: set cur to parent stack or stay if cur is parent stack*/},
+	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
+	"\2":x=>cur=cur.reverse(),
+	"\3":x=>cur=[],
+	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:[cur[x=cur.length-1]],nest.push(x)),
+	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
 	"$":x=>cur.push(cur.pick(0)),
 	"^":x=>cur.push(cur.pick(1)),
@@ -32,8 +34,8 @@ commands={
 	"ø":x=>cur.push(cur.pick(cur.pop())),
 	"+":x=>cur.push(cur.pop()+cur.pop()),
 	"-":x=>cur.push(-cur.pop()+cur.pop()),
-	"*":x=>cur.push(cur.pop()*cur.pop()),
-	"/":x=>(d=cur.pop(),n=cur.pop(),r=n/d,cur.push(n%d,r<0?Math.ceil(r):0|r)),
+	"×":x=>cur.push(cur.pop()*cur.pop()),
+	"÷":x=>(d=cur.pop(),n=cur.pop(),r=n/d,cur.push(n%d,r<0?Math.ceil(r):0|r)),
 	"_":x=>cur.push(-cur.pop()),
 	"«":x=>(s=cur.pop(),cur.push(cur.pop()<<s)),
 	"»":x=>(s=cur.pop(),cur.push(cur.pop()>>>s)),
@@ -44,7 +46,7 @@ commands={
 	"<":x=>cur.push(-(cur.pop()>cur.pop())),
 	">":x=>cur.push(-(cur.pop()<cur.pop())),
 	"'":x=>cur.push(code.charCodeAt(++ip)),
-	'"':x=>{cur.push([]);for(i=0;code[++ip]!='"';i++)cur[cur.length-1].push(code.charCodeAt(ip));cur.push(i)},
+	'"':x=>{cur.push([]);for(;code[++ip]!='"';)cur[cur.length-1].unshift(code.charCodeAt(ip))},
 	".":x=>put(cur.pop()),
 	",":x=>put(String.fromCharCode(cur.pop())),
 	"`":x=>cur.push(getc()),
@@ -65,7 +67,10 @@ eval=_=>{
 	else cur.push(c);ip++
 	console.log(`Stack1: ${JSON.stringify(stack1)}
 Stack2: ${JSON.stringify(stack2)}
+Current Stack: ${JSON.stringify(cur)}
+Nest Indices: ${nest}
+Variables: ${JSON.stringify(vars)}
 Return Stack: ${JSON.stringify(ret)}`)
 }
-init=_=>(ahead=[],ip=0,ret=[],stack1=[],stack2=[],cur=stack1,vars={},ini=0,out.innerHTML="")
-run=_=>{code=c.value,ip>=code.length&&init();for(;ip<code.length;)eval()}
+init=_=>(ahead=[],ip=0,ret=[],stack1=[],curstack=stack1,cur=stack1,stack2=[],nest=[],vars={},ini=0,out.innerHTML="")
+run=_=>{var code=nsc.value;ip>=code.length&&init();for(;ip<code.length;)eval()}
