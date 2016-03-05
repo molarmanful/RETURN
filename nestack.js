@@ -80,5 +80,5 @@ eval=_=>{
 	else if(/\s/.test(c)){ip+=(c=code.substring(ip).match(/\s+/)[0]).length;log();return}
 	else cur.push(c);ip++;log()
 }
-init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
+init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",clear())
 run=_=>{init();for(;ip<code.length;)eval()}
