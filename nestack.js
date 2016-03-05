@@ -1,3 +1,4 @@
+//requires math.js and lodash
 code=nsc.value
 ahead=[]
 ip=0
@@ -32,11 +33,12 @@ commands={
 	"\\":x=>[cur[cur.length-1],cur[cur.length-2]]=[cur[cur.length-2],cur[cur.length-1]],
 	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(x,1)),
 	"ø":x=>cur.push(cur.pick(cur.pop())),
-	"+":x=>cur.push(cur.pop()+cur.pop()),
-	"-":x=>cur.push(-cur.pop()+cur.pop()),
-	"×":x=>cur.push(cur.pop()*cur.pop()),
-	"÷":x=>(d=cur.pop(),n=cur.pop(),r=n/d,cur.push(n%d,r<0?Math.ceil(r):0|r)),
+	"+":x=>cur.push(math.add(cur.pop(),cur.pop())),
+	"-":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.subtract(b,a))),
+	"×":x=>cur.push(math.multiply(cur.pop(),cur.pop())),
+	"÷":x=>(d=cur.pop(),n=cur.pop(),r=math.divide(n,d),cur.push(math.mod(n,d),r<0?Math.ceil(r):0|r)),
 	"_":x=>cur.push(-cur.pop()),
+	"R":x=>cur.push(0|Math.random()+.5),
 	"«":x=>(s=cur.pop(),cur.push(cur.pop()<<s)),
 	"»":x=>(s=cur.pop(),cur.push(cur.pop()>>>s)),
 	"&":x=>cur.push(cur.pop()&cur.pop()),
