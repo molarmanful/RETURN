@@ -1,4 +1,4 @@
-//requires math.js and lodash
+//requires math.js
 code=nsc.value
 ahead=[]
 ip=0
@@ -25,32 +25,33 @@ commands={
 	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
 	"\2":x=>cur=cur.reverse(),
 	"\3":x=>cur=[],
+	"¬":x=>math.flatten(cur),
 	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:[cur[x=cur.length-1]],nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
 	"$":x=>cur.push(cur.pick(0)),
 	"^":x=>cur.push(cur.pick(1)),
 	"\\":x=>[cur[cur.length-1],cur[cur.length-2]]=[cur[cur.length-2],cur[cur.length-1]],
-	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(x,1)),
+	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(cur.length-x-1,1)),
 	"ø":x=>cur.push(cur.pick(cur.pop())),
 	"+":x=>cur.push(math.add(cur.pop(),cur.pop())),
 	"-":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.subtract(b,a))),
 	"×":x=>cur.push(math.multiply(cur.pop(),cur.pop())),
-	"÷":x=>(d=cur.pop(),n=cur.pop(),r=math.divide(n,d),cur.push(math.mod(n,d),r<0?Math.ceil(r):0|r)),
-	"_":x=>cur.push(-cur.pop()),
-	"R":x=>cur.push(0|Math.random()+.5),
-	"«":x=>(s=cur.pop(),cur.push(cur.pop()<<s)),
-	"»":x=>(s=cur.pop(),cur.push(cur.pop()>>>s)),
-	"&":x=>cur.push(cur.pop()&cur.pop()),
-	"|":x=>cur.push(cur.pop()^cur.pop()),
-	"~":x=>cur.push(~cur.pop()),
-	"¤":x=>Math.sign(cur.pop()),
+	"÷":x=>(d=cur.pop(),n=cur.pop(),r=math.divide(n,d),cur.push(math.mod(n,d),r<0?math.ceil(r):math.floor(r))),
+	"_":x=>cur.push((x=cur.pop()).pop?x.map(a=>-a):-x),
+	"¿":x=>cur.push(0|Math.random()+.5),
+	"«":x=>(s=cur.pop(),cur.push(math.leftShift(cur.pop(),s))),
+	"»":x=>(s=cur.pop(),cur.push(math.rightLogShift(cur.pop(),s))),
+	"&":x=>cur.push(math.bitAnd(cur.pop(),cur.pop())),
+	"|":x=>cur.push(math.bitXor(cur.pop(),cur.pop())),
+	"~":x=>cur.push(math.bitNot(cur.pop())),
+	"¤":x=>math.sign(cur.pop()),
 	"<":x=>cur.push(-(cur.pop()>cur.pop())),
 	">":x=>cur.push(-(cur.pop()<cur.pop())),
 	"'":x=>cur.push(code.charCodeAt(++ip)),
 	'"':x=>{cur.push([]);for(;code[++ip]!='"';)cur[cur.length-1].unshift(code.charCodeAt(ip))},
 	".":x=>put(cur.pop()),
-	",":x=>put(String.fromCharCode(cur.pop())),
+	",":x=>put(String.fromCharCode(...cur.pop().pop?cur:[cur])),
 	"`":x=>cur.push(getc()),
 	":":x=>vars[cur.pop()]=cur.pop(),
 	";":x=>cur.push(vars[cur.pop()]),
@@ -74,5 +75,5 @@ Nest Indices: ${nest}
 Variables: ${JSON.stringify(vars)}
 Return Stack: ${JSON.stringify(ret)}`)
 }
-init=_=>(ahead=[],ip=0,ret=[],stack1=[],curstack=stack1,cur=stack1,stack2=[],nest=[],vars={},ini=0,out.innerHTML="")
-run=_=>{var code=nsc.value;ip>=code.length&&init();for(;ip<code.length;)eval()}
+init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
+run=_=>{init();for(;ip<code.length;)eval()}
