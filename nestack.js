@@ -32,6 +32,7 @@ commands={
 	"%":x=>cur.pop(),
 	"$":x=>cur.push(cur.pick(0)),
 	"\\":x=>[cur[cur.length-1],cur[cur.length-2]]=[cur[cur.length-2],cur[cur.length-1]],
+	"¤":x=>cur.push(cur.pick(1)),
 	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(cur.length-x-2,1)),
 	"ø":x=>cur.push(cur.pick(cur.pop())),
 	"+":x=>cur.push(math.add(cur.pop(),cur.pop())),
