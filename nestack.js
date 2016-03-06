@@ -78,4 +78,4 @@ eval=_=>{
 	else cur.push(c);ip++;log()
 }
 init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
-run=_=>{init();for(;ip<code.length;)eval()}
+run=_=>{init();if(time.checked)interval=setInterval('ip<code.length?eval():clearInterval(interval)',1);else for(;ip<code.length;)eval()}
