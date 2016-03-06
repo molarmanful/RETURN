@@ -44,7 +44,7 @@ commands={
 	"«":x=>(s=cur.pop(),cur.push(math.leftShift(cur.pop(),s))),
 	"»":x=>(s=cur.pop(),cur.push(math.rightLogShift(cur.pop(),s))),
 	"&":x=>cur.push(math.bitAnd(cur.pop(),cur.pop())),
-	"|":x=>cur.push(math.bitOr(cur.pop(),cur.pop())),
+	"|":x=>cur.push(math.bitXor(cur.pop(),cur.pop())),
 	"~":x=>cur.push(math.bitNot(cur.pop())),
 	"±":x=>cur.push(math.sign(cur.pop())),
 	"<":x=>cur.push(math.unaryMinus(math.larger(cur.pop(),0))),
