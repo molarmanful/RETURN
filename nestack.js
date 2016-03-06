@@ -42,7 +42,7 @@ commands={
 	"÷":x=>(d=cur.pop(),n=cur.pop(),cur.push(math.mod(n,d),math.fix(math.divide(n,d)))),
 	"^":x=>(d=cur.pop(),n=cur.pop(),cur.push(math.fix(math.pow(n,d)))),
 	"_":x=>cur.push(math.unaryMinus(cur.pop())),
-	"¿":x=>cur.push(0|Math.random()+.5),
+	"¿":x=>cur.push(math.randomInt(2)),
 	"Ð":x=>cur.push(Date.now()),
 	"«":x=>(s=cur.pop(),cur.push(math.leftShift(cur.pop(),s))),
 	"»":x=>(s=cur.pop(),cur.push(math.rightLogShift(cur.pop(),s))),
