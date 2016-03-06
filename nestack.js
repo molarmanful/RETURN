@@ -19,7 +19,6 @@ braces={
 	"[":matching_brace
 }
 put=s=>out.textContent+=s
-getc=_=>ini<inp.value.length?inp.value.codePointAt(ini++):-1
 commands={
 	"\0":x=>cur.push(cur.length),
 	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
