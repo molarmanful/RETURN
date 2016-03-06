@@ -27,6 +27,7 @@ commands={
 	"\4":x=>cur=math.transpose(cur),
 	"\5":x=>cur=math.flatten(cur),
 	"\6":x=>cur=math.sort(cur),
+	"\7":x=>cur.push(cur.length),
 	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:(cur[cur.length-1]=[cur[x=cur.length-1]]),nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
