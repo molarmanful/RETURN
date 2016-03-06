@@ -1,6 +1,11 @@
 # Nestack
 *Nestack* (a mashing of `nest` and `stack`) is a stack-based language inspired by DUP. It is an attempt to improve upon DUP in a way that allows more programming tasks to be solved more easily.
+
+## Overview
+Nestack is different from other stack-based languages in that there are multiple stacks. You get 2 parent stacks, and new children stacks can be created along the way. There are different commands to switch between and manipulate stacks.
+
 ## Commands
+- `0-9`: Push number to stack. You may need to separate series of numbers with whitespace.
 - `0x00`: Push stack length to stack.
 - `0x01`: Switch parent stacks.
 - `0x02`: Duplicate top _n_ items into a new stack.
