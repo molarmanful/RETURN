@@ -13,6 +13,7 @@ Nestack is different from other stack-based languages in that there are multiple
 - `0x04`: Transpose stack.
 - `0x05`: Flatten stack.
 - `0x06`: Sort stack.
+- `0x07`: Get stack length.
 - `{`: Set top item as current stack.
 - `}`: Get out of current stack into surrounding stack.
 - `%`: Pop and discard.
