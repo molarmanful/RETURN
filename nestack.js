@@ -80,5 +80,5 @@ eval=_=>{
 }
 init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
 run=_=>{init();if(time.checked)interval=setInterval('ip<code.length?eval():clearInterval(interval)',1);else for(;ip<code.length;)eval()}
-encode=x=>[...x].map(a=>a.charCodeAt().toString(16)).join` `
-decode=x=>x.split` `.map(a=>String.fromCharCode(parseInt(a,16))).join``
+encode=x=>[...x].map(a=>('00'+a.charCodeAt().toString(16)).slice(-2)).join` `
+decode=x=>x.split` `.map(a=>String.fromCharCode('0x'+a)).join``
