@@ -20,7 +20,7 @@ braces={
 }
 put=s=>out.textContent+=s
 commands={
-	"\0":x=>cur.push(cur.length),
+	"\0":x=>cur.push(cur.reverse().indexOf(cur.pop())),
 	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
 	"\2":x=>cur.push(cur.slice(cur.length-cur.pop()-1)),
 	"\3":x=>cur=cur.reverse(),
