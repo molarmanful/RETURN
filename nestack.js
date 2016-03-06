@@ -20,13 +20,13 @@ braces={
 }
 put=s=>out.textContent+=s
 commands={
-	"\0":x=>(x=cur.pop(),cur.push(cur.reverse().reduce((a,b,c)=>(b==x&&a.push(c),a),[]))),
+	"\0":x=>(x=cur.pop(),cur.push(cur.slice(0).reverse().reduce((a,b,c)=>(b==x&&a.push(c),a),[]))),
 	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
 	"\2":x=>cur.push(cur.slice(cur.length-cur.pop()-1)),
-	"\3":x=>cur=cur.reverse(),
+	"\3":x=>cur.reverse(),
 	"\4":x=>cur=math.transpose(cur),
 	"\5":x=>cur=math.flatten(cur),
-	"\6":x=>cur=cur.sort(),
+	"\6":x=>cur=math.sort(cur),
 	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:(cur[cur.length-1]=[cur[x=cur.length-1]]),nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
