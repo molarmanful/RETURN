@@ -6,7 +6,7 @@ Nestack is different from other stack-based languages in that there are multiple
 
 ## Commands
 - `0-9`: Push number to stack. You may need to separate series of numbers with whitespace.
-- `0x00`: Push stack length to stack.
+- `0x00`: Find indexes of top item in stack, or return `-1` if not found.
 - `0x01`: Switch parent stacks.
 - `0x02`: Duplicate top _n_ items into a new stack.
 - `0x03`: Reverse stack.
