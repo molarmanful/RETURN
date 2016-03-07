@@ -65,12 +65,12 @@ commands={
 	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
 	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>ret.push(ip),ip=op)
 }
-log=_=>stats.textContent=`Command: ${c}
-Stack1: ${JSON.stringify(stack1)}
-Stack2: ${JSON.stringify(stack2)}
-Current Stack: ${JSON.stringify(cur)}
-Nest Indices: ${nest}
-Variables: ${JSON.stringify(vars)}
+log=_=>stats.innerHTML=`Command: ${c}<br>
+Stack1: ${JSON.stringify(stack1)}<br>
+Stack2: ${JSON.stringify(stack2)}<br>
+Current Stack: ${JSON.stringify(cur)}<br>
+Nest Indices: ${nest}<br>
+Variables: ${JSON.stringify(vars)}<br>
 Return Stack: ${JSON.stringify(ret)}`
 eval=_=>{
 	c=code[ip]
