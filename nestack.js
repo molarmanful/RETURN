@@ -1,5 +1,3 @@
-'use strict';
-
 var _templateObject = _taggedTemplateLiteral([' '], [' ']),
     _templateObject2 = _taggedTemplateLiteral([''], ['']);
 
