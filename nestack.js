@@ -66,8 +66,7 @@ commands={
 	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
 	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>ret.push(ip),ip=op)
 }
-log=_=>stats.innerHTML=`
-Command       : ${c}
+log=_=>stats.innerHTML=`Command       : ${c}
 IP            : ${ip}
 Stack1        : ${JSON.stringify(stack1)}
 Stack2        : ${JSON.stringify(stack2)}
