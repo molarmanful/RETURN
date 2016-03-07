@@ -1,5 +1,5 @@
-# Nestack
-*Nestack* (a mashing of `nest` and `stack`) is a stack-based language inspired by DUP. It is an attempt to improve upon DUP in a way that allows more programming tasks to be solved more easily.
+# RETURN
+*RETURN* (my favorite stack type in DUP) is a stack-based language inspired by DUP. It is an attempt to improve upon DUP in a way that allows more programming tasks to be solved more easily.
 
 ## Overview
 Nestack is different from other stack-based languages in that there are multiple stacks. You get 2 parent stacks, and new children stacks can be created along the way. There are different commands to switch between and manipulate stacks.
