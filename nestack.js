@@ -1,4 +1,6 @@
 //requires math.js
+
+//initial vars+functions
 code=nsc.value
 ahead=[]
 ip=0
@@ -8,6 +10,7 @@ vars={}
 ini=0
 c=''
 Array.prototype.pick=function(n){return this[this.length-n-1]}
+//lookahead stuff
 seek=c=>(!ahead[ip]&&(ahead[ip]=ip+code.slice(ip).indexOf(c)),ahead[ip])
 matching_brace=_=>{
 	if(!ahead[start=ip]){
@@ -20,6 +23,8 @@ braces={
 	"[":matching_brace
 }
 put=s=>out.textContent+=s
+
+//functions
 commands={
 	"\0":x=>(x=cur.pop(),cur.push(cur.slice(0).reverse().reduce((a,b,c)=>(b==x&&a.push(c),a),[]))),
 	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
@@ -66,6 +71,8 @@ commands={
 	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
 	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>ret.push(ip),ip=op)
 }
+
+//good-to-know data for runtime
 log=_=>stats.innerHTML=`Command       : ${c}
 IP            : ${ip}
 Stack1        : ${JSON.stringify(stack1)}
@@ -75,6 +82,8 @@ Nest Indices  : ${nest}
 Variables     : ${JSON.stringify(vars)}
 Return Stack  : ${JSON.stringify(ret)}`
 log()
+
+//actual parsing
 eval=_=>{
 	c=code[ip]
 	if(commands[c])commands[c]();
@@ -82,7 +91,13 @@ eval=_=>{
 	else if(/\s/.test(c)){ip+=(c=code.substring(ip).match(/\s+/)[0]).length;log();return}
 	else cur.push(c);ip++;log()
 }
+
+//clearing everything before starting prog
 init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
+
+//determines either full or timed run
 run=_=>{init();if(time.checked)interval=setInterval('ip<code.length?eval():clearInterval(interval)',ms.value||1);else for(;ip<code.length;)eval()}
+
+//iso-8859-1 encoding
 encode=x=>[...x].map(a=>('00'+a.charCodeAt().toString(16)).slice(-2)).join` `
 decode=x=>x.split` `.map(a=>String.fromCharCode('0x'+a)).join``
