@@ -4,6 +4,8 @@
 ## Overview
 RETURN is different from other stack-based languages in that there are multiple stacks. You get 2 parent stacks, and new children stacks can be created along the way. There are different commands to switch between and manipulate stacks.
 
+RETURN uses ISO-8859-1 as its default encoding, but the interpreter uses UTF-8.
+
 ## Commands
 - `0-9`: Push number to stack. You may need to separate series of numbers with whitespace.
 - `0x00`: Find all indices of top item in stack, or return `-1` if not found.
