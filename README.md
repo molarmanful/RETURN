@@ -2,7 +2,7 @@
 *RETURN* (my favorite stack type in DUP) is a stack-based language inspired by DUP. It is an attempt to improve upon DUP in a way that allows more programming tasks to be solved more easily.
 
 ## Overview
-Nestack is different from other stack-based languages in that there are multiple stacks. You get 2 parent stacks, and new children stacks can be created along the way. There are different commands to switch between and manipulate stacks.
+RETURN is different from other stack-based languages in that there are multiple stacks. You get 2 parent stacks, and new children stacks can be created along the way. There are different commands to switch between and manipulate stacks.
 
 ## Commands
 - `0-9`: Push number to stack. You may need to separate series of numbers with whitespace.
