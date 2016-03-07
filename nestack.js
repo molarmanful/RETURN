@@ -72,6 +72,7 @@ Current Stack: ${JSON.stringify(cur)}<br>
 Nest Indices: ${nest}<br>
 Variables: ${JSON.stringify(vars)}<br>
 Return Stack: ${JSON.stringify(ret)}`
+log()
 eval=_=>{
 	c=code[ip]
 	if(commands[c])commands[c]();
