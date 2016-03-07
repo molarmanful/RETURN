@@ -6,6 +6,7 @@ stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[]
 ret=[]
 vars={}
 ini=0
+c=''
 Array.prototype.pick=function(n){return this[this.length-n-1]}
 seek=c=>(!ahead[ip]&&(ahead[ip]=ip+code.slice(ip).indexOf(c)),ahead[ip])
 matching_brace=_=>{
