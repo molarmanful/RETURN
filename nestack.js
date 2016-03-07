@@ -67,13 +67,13 @@ commands={
 	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>ret.push(ip),ip=op)
 }
 log=_=>stats.innerHTML=`
-Command       : ${c}<br>
-IP            : ${ip}<br>
-Stack1        : ${JSON.stringify(stack1)}<br>
-Stack2        : ${JSON.stringify(stack2)}<br>
-Current Stack : ${JSON.stringify(cur)}<br>
-Nest Indices  : ${nest}<br>
-Variables     : ${JSON.stringify(vars)}<br>
+Command       : ${c}
+IP            : ${ip}
+Stack1        : ${JSON.stringify(stack1)}
+Stack2        : ${JSON.stringify(stack2)}
+Current Stack : ${JSON.stringify(cur)}
+Nest Indices  : ${nest}
+Variables     : ${JSON.stringify(vars)}
 Return Stack  : ${JSON.stringify(ret)}`
 log()
 eval=_=>{
