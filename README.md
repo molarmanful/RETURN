@@ -4,7 +4,7 @@
 ## Overview
 RETURN is different from other stack-based languages in that there are multiple stacks. You get 2 parent stacks, and new children stacks can be created along the way. There are different commands to switch between and manipulate stacks.
 
-RETURN uses ISO-8859-1
+RETURN uses ISO-8859-1.
 
 ## Commands
 - `0-9`: Push number to stack. You may need to separate series of numbers with whitespace.
