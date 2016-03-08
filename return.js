@@ -20,7 +20,9 @@ Array.prototype.pick = function (n) {
 	return this[this.length - n - 1];
 };
 Array.prototype.chunk = function (r) {
-	var t, n = [], e = 0;for (t = this.length / r; t > e;) {
+	var t,
+	    n = [],
+	    e = 0;for (t = this.length / r; t > e;) {
 		n[e] = this.splice(0, r), e++;
 	}return n;
 };
@@ -80,7 +82,7 @@ commands = {
 		return x = cur.pop(), cur.push(((y = cur.pop()).pop ? y : [y]).concat(x));
 	},
 	"\t": function _(x) {
-		return cur.chunk(cur.pop());
+		return cur = cur.chunk(cur.pop());
 	},
 	"\n": function _(x) {
 		return a = cur.pop(), b = cur.pop(), cur.push(math.range(Math.min(a, b), Math.max(a, b))._data);
