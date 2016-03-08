@@ -82,12 +82,11 @@ commands = {
 	"\t": function _(x) {
 		return cur.chunk(cur.pop());
 	},
-	"\n": function _(x) {},
-	"\v": function _(x) {},
-	"\f": function _(x) {},
-	"\r": function _(x) {
+	"\n": function _(x) {
 		return a = cur.pop(), b = cur.pop(), cur.push(math.range(math.min(a, b), math.max(a, b)));
 	},
+	"\v": function _(x) {},
+	"\f": function _(x) {},
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
 	},
