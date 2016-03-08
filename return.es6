@@ -10,6 +10,7 @@ vars={}
 ini=0
 c=''
 Array.prototype.pick=function(n){return this[this.length-n-1]}
+Array.prototype.chunk=function(r){t,n=[],e=0;for(t=this.length/r;t>e;)n[e]=this.splice(0,r),e++;return n}
 //lookahead stuff
 seek=c=>(!ahead[ip]&&(ahead[ip]=ip+code.slice(ip).indexOf(c)),ahead[ip])
 matching_brace=_=>{
@@ -26,14 +27,20 @@ put=s=>out.textContent+=s
 
 //functions
 commands={
-	"\0":x=>(x=cur.pop(),cur.push(cur.slice(0).reverse().reduce((a,b,c)=>(b==x&&a.push(c),a),[]))),
-	"\1":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
-	"\2":x=>cur.push(cur.slice(cur.length-cur.pop()-1)),
-	"\3":x=>cur.reverse(),
-	"\4":x=>cur=math.transpose(cur),
-	"\5":x=>cur=math.flatten(cur),
-	"\6":x=>cur=math.sort(cur),
-	"\7":x=>cur.push(cur.length),
+	"\x00":x=>(x=cur.pop(),cur.push(cur.slice(0).reverse().reduce((a,b,c)=>(b==x&&a.push(c),a),[]))),
+	"\x01":x=>(curstack=cur=curstack==stack1?stack2:stack1,nest=[]),
+	"\x02":x=>cur.push(cur.slice(cur.length-cur.pop()-1)),
+	"\x03":x=>cur.reverse(),
+	"\x04":x=>cur=math.transpose(cur),
+	"\x05":x=>cur=math.flatten(cur),
+	"\x06":x=>cur=math.sort(cur),
+	"\x07":x=>cur.push(cur.length),
+	"\b":x=>(x=cur.pop(),cur.push(((y=cur.pop()).pop?y:[y]).concat(x))),
+	"\t":x=>cur=cur.chunk(cur.pop()),
+	"\n":x=>{},
+	"\v":x=>{},
+	"\f":x=>{},
+	"\r":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.range(math.min(a,b),math.max(a,b)))),
 	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:(cur[cur.length-1]=[cur[x=cur.length-1]]),nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
@@ -41,6 +48,7 @@ commands={
 	"\\":x=>[cur[cur.length-1],cur[cur.length-2]]=[cur[cur.length-2],cur[cur.length-1]],
 	"¤":x=>cur.push(cur.pick(1)),
 	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(cur.length-x-2,1)),
+	"ª":x=>cur.splice(cur.length-cur.pop()-2,0,cur.pop()),
 	"ø":x=>cur.push(cur.pick(cur.pop())),
 	"+":x=>cur.push(math.add(cur.pop(),cur.pop())),
 	"-":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.subtract(b,a))),
