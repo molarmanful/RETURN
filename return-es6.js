@@ -10,7 +10,7 @@ vars={}
 ini=0
 c=''
 Array.prototype.pick=function(n){return this[this.length-n-1]}
-Array.prototype.chunk=function(r){t,n=[],e=0;for(t=this.length/r;t>e;)n[e]=this.splice(0,r),e++;return n}
+Array.prototype.chunk=function(r){var t,n=[],e=0;for(t=this.length/r;t>e;)n[e]=this.splice(0,r),e++;return n}
 //lookahead stuff
 seek=c=>(!ahead[ip]&&(ahead[ip]=ip+code.slice(ip).indexOf(c)),ahead[ip])
 matching_brace=_=>{
