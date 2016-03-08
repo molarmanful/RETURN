@@ -19,6 +19,11 @@ c = '';
 Array.prototype.pick = function (n) {
 	return this[this.length - n - 1];
 };
+Array.prototype.chunk = function (r) {
+	t, n = [], e = 0;for (t = this.length / r; t > e;) {
+		n[e] = this.splice(0, r), e++;
+	}return n;
+};
 //lookahead stuff
 seek = function seek(c) {
 	return !ahead[ip] && (ahead[ip] = ip + code.slice(ip).indexOf(c)), ahead[ip];
@@ -71,6 +76,18 @@ commands = {
 	"\x07": function _(x) {
 		return cur.push(cur.length);
 	},
+	"\b": function _(x) {
+		return x = cur.pop(), cur.push(((y = cur.pop()).pop ? y : [y]).concat(x));
+	},
+	"\t": function _(x) {
+		return cur = cur.chunk(cur.pop());
+	},
+	"\n": function _(x) {},
+	"\v": function _(x) {},
+	"\f": function _(x) {},
+	"\r": function _(x) {
+		return a = cur.pop(), b = cur.pop(), cur.push(math.range(math.min(a, b), math.max(a, b)));
+	},
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
 	},
@@ -95,6 +112,9 @@ commands = {
 	},
 	"@": function _(x) {
 		return cur.push(cur.pick(x = cur.pop())), cur.splice(cur.length - x - 2, 1);
+	},
+	"ª": function _(x) {
+		return cur.splice(cur.length - cur.pop() - 2, 0, cur.pop());
 	},
 	"ø": function _(x) {
 		return cur.push(cur.pick(cur.pop()));
