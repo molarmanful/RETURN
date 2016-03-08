@@ -80,7 +80,7 @@ commands = {
 		return x = cur.pop(), cur.push(((y = cur.pop()).pop ? y : [y]).concat(x));
 	},
 	"\t": function _(x) {
-		return cur = cur.chunk(cur.pop());
+		return cur.chunk(cur.pop());
 	},
 	"\n": function _(x) {},
 	"\v": function _(x) {},
