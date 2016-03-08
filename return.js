@@ -83,7 +83,7 @@ commands = {
 		return cur.chunk(cur.pop());
 	},
 	"\n": function _(x) {
-		return a = cur.pop(), b = cur.pop(), cur.push(math.range(Math.min(a, b), Math.max(a, b)));
+		return a = cur.pop(), b = cur.pop(), cur.push(math.range(Math.min(a, b), Math.max(a, b))._data);
 	},
 	"\v": function _(x) {},
 	"\f": function _(x) {},
