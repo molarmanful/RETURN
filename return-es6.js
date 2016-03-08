@@ -36,7 +36,7 @@ commands={
 	"\x06":x=>cur=math.sort(cur),
 	"\x07":x=>cur.push(cur.length),
 	"\b":x=>(x=cur.pop(),cur.push(((y=cur.pop()).pop?y:[y]).concat(x))),
-	"\t":x=>cur.chunk(cur.pop()),
+	"\t":x=>cur=cur.chunk(cur.pop()),
 	"\n":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.range(Math.min(a,b),Math.max(a,b))._data)),
 	"\v":x=>{},
 	"\f":x=>{},
