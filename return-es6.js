@@ -77,7 +77,7 @@ commands={
 	"!":x=>(ret.push(ip),ip=cur.pop()),
 	"?":x=>(f=cur.pop(),t=cur.pop(),ret.push(ip),ip=cur.pop()?t:f),
 	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
-	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>ret.push(ip),ip=op)
+	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>(ret.push(ip),ip=op))
 }
 
 //good-to-know data for runtime
