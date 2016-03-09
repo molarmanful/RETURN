@@ -87,8 +87,21 @@ commands = {
 	"\n": function _(x) {
 		return a = cur.pop(), b = cur.pop(), cur.push(math.range(Math.min(a, b), Math.max(a, b))._data);
 	},
-	"\v": function _(x) {},
-	"\f": function _(x) {},
+	"\v": function _(x) {
+		return cur = (a = [], [].concat(_toConsumableArray(Array(3))).map(function (x) {
+			return a = [a].concat(_toConsumableArray(cur));
+		}), cur = a);
+	},
+	"\f": function _(x) {
+		return cur = cur.filter(function (x) {
+			return x;
+		});
+	},
+	"¨": function _(x) {
+		a = [];cur.slice(0).map(function (x) {
+			return commands[++ip](), a.unshift(cur.pop());
+		});cur = a;
+	}, //TODO: Better each function
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
 	},
