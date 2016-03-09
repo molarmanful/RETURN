@@ -99,7 +99,7 @@ commands = {
 	},
 	"¨": function _(x) {
 		a = [];cur.slice(0).map(function (x) {
-			return commands[++ip](), a.unshift(cur.pop());
+			return commands[code[++ip]](), a.unshift(cur.pop());
 		});cur = a;
 	}, //TODO: Better each function
 	"{": function _(x) {
