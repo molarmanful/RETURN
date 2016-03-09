@@ -222,8 +222,8 @@ commands = {
 	},
 	"=": function _(x) {
 		return op = cur.pop(), commands[code[++ip]] = function (x) {
-			return ret.push(ip);
-		}, ip = op;
+			return ret.push(ip), ip = op;
+		};
 	}
 };
 
