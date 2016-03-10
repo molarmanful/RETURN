@@ -93,17 +93,10 @@ commands = {
 		}), cur = a);
 	},
 	"\f": function _(x) {
-		return cur = cur.filter(function (x) {
+		return a = cur.slice(0), cur = [], cur.push(a.filter(function (x) {
 			return x;
-		});
+		}));
 	},
-	"¨": function _(x) {
-		var _cur;
-
-		a = [], ip++;cur.slice(0).map(function (x) {
-			return commands[code[ip]](), a.unshift(cur.pop());
-		});(_cur = cur).push.apply(_cur, _toConsumableArray(a));
-	}, //TODO: Better each function
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
 	},
