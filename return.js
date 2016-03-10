@@ -232,7 +232,7 @@ commands = {
 
 //good-to-know data for runtime
 log = function log(_) {
-	return stats.innerHTML = 'Code          : ' + (code.slice(0, ip) + ('<span style=background-color:#7ec0ee>' + code[ip] + '</span>') + code.slice(ip + 2)) + '\nIP            : ' + ip + '\nStack1        : ' + JSON.stringify(stack1) + '\nStack2        : ' + JSON.stringify(stack2) + '\nCurrent Stack : ' + JSON.stringify(cur) + '\nNest Indices  : ' + nest + '\nVariables     : ' + JSON.stringify(vars) + '\nReturn Stack  : ' + JSON.stringify(ret);
+	return stats.innerHTML = 'Code          : ' + (format = [].concat(_toConsumableArray(code)), format[ip] = '<span style=background-color:#7ec0ee>' + code[ip] + '</span>', format.join(_templateObject)) + '\nIP            : ' + ip + '\nStack1        : ' + JSON.stringify(stack1) + '\nStack2        : ' + JSON.stringify(stack2) + '\nCurrent Stack : ' + JSON.stringify(cur) + '\nNest Indices  : ' + nest + '\nVariables     : ' + JSON.stringify(vars) + '\nReturn Stack  : ' + JSON.stringify(ret);
 };
 log();
 
