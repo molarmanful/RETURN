@@ -98,9 +98,11 @@ commands = {
 		});
 	},
 	"¨": function _(x) {
+		var _cur;
+
 		a = [], ip++;cur.slice(0).map(function (x) {
 			return commands[code[ip]](), a.unshift(cur.pop());
-		});cur = cur.concat(a);
+		});cur = (_cur = cur).push.apply(_cur, _toConsumableArray(a));
 	}, //TODO: Better each function
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
