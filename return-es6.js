@@ -46,7 +46,7 @@ commands={
 	"$":x=>cur.push(cur.pick(0)),
 	"\\":x=>[cur[cur.length-1],cur[cur.length-2]]=[cur[cur.length-2],cur[cur.length-1]],
 	"¦":x=>cur.push(cur.pop().toString().split``.map(x=>+x)),
-	"§":x=>cur.push(+cur.pop().join``)
+	"§":x=>cur.push(+cur.pop().join``),
 	"¤":x=>cur.push(cur.pick(1)),
 	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(cur.length-x-2,1)),
 	"ª":x=>cur.splice(cur.length-cur.pop()-2,0,cur.pop()),
