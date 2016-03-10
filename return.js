@@ -121,6 +121,9 @@ commands = {
 			return +x;
 		}));
 	},
+	"§": function _(x) {
+		return cur.push(+cur.pop().join(_templateObject));
+	},
 	"¤": function _(x) {
 		return cur.push(cur.pick(1));
 	},
