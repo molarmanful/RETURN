@@ -134,19 +134,19 @@ commands = {
 		return cur.push(cur.pick(cur.pop()));
 	},
 	"+": function _(x) {
-		return cur.push(math.add(cur.pop(), cur.pop()));
+		return cur.push(math.add(cur.pop() || 0, cur.pop() || 0));
 	},
 	"-": function _(x) {
-		return a = cur.pop(), b = cur.pop(), cur.push(math.subtract(b, a));
+		return a = cur.pop() || 0, b = cur.pop() || 0, cur.push(math.subtract(b, a));
 	},
 	"×": function _(x) {
-		return cur.push(math.multiply(cur.pop(), cur.pop()));
+		return cur.push(math.multiply(cur.pop() || 0, cur.pop() || 0));
 	},
 	"÷": function _(x) {
-		return d = cur.pop(), n = cur.pop(), cur.push(math.mod(n, d), math.fix(math.divide(n, d)));
+		return d = cur.pop() || 0, n = cur.pop() || 0, cur.push(math.mod(n, d), math.fix(math.divide(n, d)));
 	},
 	"^": function _(x) {
-		return d = cur.pop(), n = cur.pop(), cur.push(math.fix(math.pow(n, d)));
+		return d = cur.pop() || 0, n = cur.pop() || 0, cur.push(math.fix(math.pow(n, d)));
 	},
 	"¿": function _(x) {
 		return cur.push(math.randomInt(2));
@@ -155,28 +155,28 @@ commands = {
 		return cur.push(Date.now());
 	},
 	"«": function _(x) {
-		return s = cur.pop(), cur.push(math.leftShift(cur.pop(), s));
+		return s = cur.pop(), cur.push(math.leftShift(cur.pop() || 0, s || 0));
 	},
 	"»": function _(x) {
-		return s = cur.pop(), cur.push(math.rightLogShift(cur.pop(), s));
+		return s = cur.pop(), cur.push(math.rightLogShift(cur.pop() || 0, s || 0));
 	},
 	"&": function _(x) {
-		return cur.push(math.bitAnd(cur.pop(), cur.pop()));
+		return cur.push(math.bitAnd(cur.pop() || 0, cur.pop() || 0));
 	},
 	"|": function _(x) {
-		return cur.push(math.bitXor(cur.pop(), cur.pop()));
+		return cur.push(math.bitXor(cur.pop() || 0, cur.pop() || 0));
 	},
 	"~": function _(x) {
-		return cur.push(math.bitNot(cur.pop()));
+		return cur.push(math.bitNot(cur.pop() || 0));
 	},
 	"±": function _(x) {
-		return cur.push(math.sign(cur.pop()));
+		return cur.push(math.sign(cur.pop() || 0));
 	},
 	"<": function _(x) {
-		return cur.push(math.unaryMinus(math.smaller(cur.pop(), 0)));
+		return cur.push(math.unaryMinus(math.smaller(cur.pop() || 0, 0)));
 	},
 	">": function _(x) {
-		return cur.push(math.unaryMinus(math.larger(cur.pop(), 0)));
+		return cur.push(math.unaryMinus(math.larger(cur.pop() || 0, 0)));
 	},
 	"'": function _(x) {
 		return cur.push(code.codePointAt(++ip));
