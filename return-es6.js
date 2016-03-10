@@ -39,8 +39,7 @@ commands={
 	"\t":x=>cur=cur.chunk(cur.pop()),
 	"\n":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.range(Math.min(a,b),Math.max(a,b))._data)),
 	"\v":x=>cur=(a=[],[...Array(3)].map(x=>a=[a,...cur]),cur=a),
-	"\f":x=>cur=cur.filter(x=>x),
-	"¨":x=>{a=[],ip++;cur.slice(0).map(x=>(commands[code[ip]](),a.unshift(cur.pop())));cur.push(...a)},//TODO: Better each function
+	"\f":x=>(a=cur.slice(0),cur=[],cur.push(a.filter(x=>x))),
 	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:(cur[cur.length-1]=[cur[x=cur.length-1]]),nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
