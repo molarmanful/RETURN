@@ -1,5 +1,5 @@
-var _templateObject = _taggedTemplateLiteral([' '], [' ']),
-    _templateObject2 = _taggedTemplateLiteral([''], ['']);
+var _templateObject = _taggedTemplateLiteral([''], ['']),
+    _templateObject2 = _taggedTemplateLiteral([' '], [' ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -115,6 +115,11 @@ commands = {
 		var _ref;
 
 		return _ref = [cur[cur.length - 2], cur[cur.length - 1]], cur[cur.length - 1] = _ref[0], cur[cur.length - 2] = _ref[1], _ref;
+	},
+	"¦": function _(x) {
+		return cur.push(cur.pop().toString().split(_templateObject).map(function (x) {
+			return +x;
+		}));
 	},
 	"¤": function _(x) {
 		return cur.push(cur.pick(1));
@@ -254,10 +259,10 @@ run = function run(_) {
 encode = function encode(x) {
 	return [].concat(_toConsumableArray(x)).map(function (a) {
 		return ('00' + a.charCodeAt().toString(16)).slice(-2);
-	}).join(_templateObject);
+	}).join(_templateObject2);
 };
 decode = function decode(x) {
-	return x.split(_templateObject).map(function (a) {
+	return x.split(_templateObject2).map(function (a) {
 		return String.fromCharCode('0x' + a);
-	}).join(_templateObject2);
+	}).join(_templateObject);
 };
