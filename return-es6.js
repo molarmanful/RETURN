@@ -1,7 +1,6 @@
 //requires math.js
 
 //initial vars+functions
-nsc.oninput=_=>code=nsc.value
 ahead=[]
 ip=0
 stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[]
@@ -92,7 +91,7 @@ Current Stack : ${JSON.stringify(cur)}
 Nest Indices  : ${nest}
 Variables     : ${JSON.stringify(vars)}
 Return Stack  : ${JSON.stringify(ret)}`
-log()
+nsc.oninput=_=>(code=nsc.value,log())
 
 //actual parsing
 parse=_=>{
