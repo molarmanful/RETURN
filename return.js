@@ -8,9 +8,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //requires math.js
 
 //initial vars+functions
-nsc.oninput = function (_) {
-	return code = nsc.value;
-};
 ahead = [];
 ip = 0;
 stack1 = [], stack2 = [], cur = stack1, curstack = stack1, nest = [];
@@ -248,7 +245,9 @@ commands = {
 log = function log(_) {
 	return stats.innerHTML = 'Code          : ' + (format = [].concat(_toConsumableArray(code)), format[ip - 1] = '<span style=background-color:#7ec0ee>' + code[ip - 1] + '</span>', format.join(_templateObject)) + '\nIP            : ' + ip + '\nStack1        : ' + JSON.stringify(stack1) + '\nStack2        : ' + JSON.stringify(stack2) + '\nCurrent Stack : ' + JSON.stringify(cur) + '\nNest Indices  : ' + nest + '\nVariables     : ' + JSON.stringify(vars) + '\nReturn Stack  : ' + JSON.stringify(ret);
 };
-log();
+nsc.oninput = function (_) {
+	return code = nsc.value, log();
+};
 
 //actual parsing
 parse = function parse(_) {
