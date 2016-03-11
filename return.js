@@ -121,16 +121,18 @@ commands = {
 		return cur.push(+cur.pop().join(_templateObject));
 	},
 	"¨": function _(x) {
-		return x = cur.pop(), cur.push(String.fromCodePoint.apply(String, _toConsumableArray(cur.pop())).split(String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]))).map(function (a) {
+		var _cur;
+
+		return x = cur.pop(), (_cur = cur).push.apply(_cur, _toConsumableArray(String.fromCodePoint.apply(String, _toConsumableArray(cur.pop())).split(String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]))).map(function (a) {
 			return [].concat(_toConsumableArray(a)).map(function (b) {
 				return b.codePointAt();
 			});
-		}));
+		})));
 	},
 	"°": function _(x) {
-		var _cur;
+		var _cur2;
 
-		return a = cur.pop(), b = cur, cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray(b.map(function (x) {
+		return a = cur.pop(), b = cur, cur.splice(0, cur.length), (_cur2 = cur).push.apply(_cur2, _toConsumableArray(b.map(function (x) {
 			return String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]));
 		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))).split(_templateObject).map(function (x) {
 			return x.codePointAt();
