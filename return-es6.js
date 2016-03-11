@@ -1,7 +1,7 @@
 //requires math.js
 
 //initial vars+functions
-code=nsc.value
+nsc.oninput=_=>code=nsc.value
 ahead=[]
 ip=0
 stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[]
