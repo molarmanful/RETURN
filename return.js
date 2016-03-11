@@ -130,9 +130,9 @@ commands = {
 	"°": function _(x) {
 		var _cur;
 
-		return a = cur.pop(), b = cur, cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray(b.map(function (x) {
-			return String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]));
-		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))).split(_templateObject).map(function (x) {
+		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
+			return String.fromCodePoint.apply(String, _toConsumableArray(x));
+		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))))).map(function (x) {
 			return x.codePointAt();
 		})));
 	},
