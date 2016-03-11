@@ -83,7 +83,7 @@ commands={
 }
 
 //good-to-know data for runtime
-log=_=>stats.innerHTML=`Code          │ ${format=[...code],format[ip-1]=`<span style=background-color:#7ec0ee>${code[ip-1]}</span>`,format.join``}
+log=_=>stats.innerHTML=`Code          │ ${format=[...code.replace(/[\x00-\x0f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))],format[ip-1]=`<span style=background-color:#7ec0ee>${code[ip-1]}</span>`,format.join``}
 IP            │ ${ip}
 Stack1        │ ${JSON.stringify(stack1)}
 Stack2        │ ${JSON.stringify(stack2)}
