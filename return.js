@@ -66,13 +66,13 @@ commands = {
 		return cur.reverse();
 	},
 	"\x04": function _(x) {
-		return cur = math.transpose(cur);
+		return cur.splice(0, cur.length), cur.push(math.transpose(cur));
 	},
 	"\x05": function _(x) {
-		return cur = math.flatten(cur);
+		return cur.splice(0, cur.length), cur.push(math.flatten(cur));
 	},
 	"\x06": function _(x) {
-		return cur = math.sort(cur);
+		return cur.splice(0, cur.length), cur.push(math.sort(cur));
 	},
 	"\x07": function _(x) {
 		return cur.push(cur.length);
