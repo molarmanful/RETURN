@@ -92,11 +92,7 @@ commands = {
 			return a = [a].concat(_toConsumableArray(cur));
 		}), cur = a);
 	},
-	"\f": function _(x) {
-		return a = cur.slice(0), cur = [], cur.push(a.filter(function (x) {
-			return x;
-		}));
-	},
+	"\f": function _(x) {},
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
 	},
@@ -123,6 +119,18 @@ commands = {
 	},
 	"§": function _(x) {
 		return cur.push(+cur.pop().join(_templateObject));
+	},
+	"¨": function _(x) {
+		return x = cur.pop(), cur.push(String.fromCodePoint.apply(String, _toConsumableArray(cur.pop())).split(String.fromCodePoint(x)).map(function (a) {
+			return [].concat(_toConsumableArray(a)).map(function (b) {
+				return b.codePointAt();
+			});
+		}));
+	},
+	"°": function _(x) {
+		return cur.push(cur.join(String.fromCodePoint.apply(String, _toConsumableArray("" + cur.pop()))).split(_templateObject).map(function (x) {
+			return x.codePointAt();
+		})), cur.splice(cur.length - 2, 1);
 	},
 	"¤": function _(x) {
 		return cur.push(cur.pick(1));
