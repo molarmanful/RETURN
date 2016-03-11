@@ -91,7 +91,7 @@ Current Stack : ${JSON.stringify(cur)}
 Nest Indices  : ${nest}
 Variables     : ${JSON.stringify(vars)}
 Return Stack  : ${JSON.stringify(ret)}`
-nsc.oninput=_=>(code=nsc.value,log())
+nsc.oninput=onload=_=>(code=nsc.value,log())
 
 //actual parsing
 parse=_=>{
