@@ -128,11 +128,13 @@ commands = {
 		}));
 	},
 	"°": function _(x) {
-		return a = cur.pop(), cur.push(cur.map(function (x) {
+		var _cur;
+
+		return a = cur.pop(), cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray(cur.map(function (x) {
 			return String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]));
 		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))).split(_templateObject).map(function (x) {
 			return x.codePointAt();
-		})), cur.splice(cur.length - 2, 1);
+		})));
 	},
 	"¤": function _(x) {
 		return cur.push(cur.pick(1));
