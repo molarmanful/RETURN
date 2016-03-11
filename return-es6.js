@@ -48,7 +48,7 @@ commands={
 	"¦":x=>cur.push(cur.pop().toString().split``.map(x=>+x)),
 	"§":x=>cur.push(+cur.pop().join``),
 	"¨":x=>(x=cur.pop(),cur.push(String.fromCodePoint(...cur.pop()).split(String.fromCodePoint(...x.pop?x:[x])).map(a=>[...a].map(b=>b.codePointAt())))),
-	"°":x=>(a=cur.pop(),cur.push(cur.map(x=>String.fromCodePoint(...x.pop?x:[x])).join(String.fromCodePoint(...a.pop?a:[a])).split``.map(x=>x.codePointAt())),cur.splice(cur.length-2,1)),
+	"°":x=>(a=cur.pop(),cur.splice(0,cur.length),cur.push(...cur.map(x=>String.fromCodePoint(...x.pop?x:[x])).join(String.fromCodePoint(...a.pop?a:[a])).split``.map(x=>x.codePointAt()))),
 	"¤":x=>cur.push(cur.pick(1)),
 	"@":x=>(cur.push(cur.pick(x=cur.pop())),cur.splice(cur.length-x-2,1)),
 	"ª":x=>cur.splice(cur.length-cur.pop()-2,0,cur.pop()),
