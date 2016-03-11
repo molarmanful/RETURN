@@ -128,7 +128,9 @@ commands = {
 		}));
 	},
 	"°": function _(x) {
-		return cur.push(cur.join(String.fromCodePoint.apply(String, _toConsumableArray((x = cur.pop()).pop ? x : [x]))).split(_templateObject).map(function (x) {
+		return a = cur.pop(), cur.push(cur.map(function (x) {
+			return String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]));
+		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))).split(_templateObject).map(function (x) {
 			return x.codePointAt();
 		})), cur.splice(cur.length - 2, 1);
 	},
