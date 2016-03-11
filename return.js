@@ -8,7 +8,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //requires math.js
 
 //initial vars+functions
-code = nsc.value;
+nsc.oninput = function (_) {
+	return code = nsc.value;
+};
 ahead = [];
 ip = 0;
 stack1 = [], stack2 = [], cur = stack1, curstack = stack1, nest = [];
