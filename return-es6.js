@@ -83,14 +83,14 @@ commands={
 }
 
 //good-to-know data for runtime
-log=_=>stats.innerHTML=`Code          : ${format=[...code],format[ip-1]=`<span style=background-color:#7ec0ee>${code[ip-1]}</span>`,format.join``}
-IP            : ${ip}
-Stack1        : ${JSON.stringify(stack1)}
-Stack2        : ${JSON.stringify(stack2)}
-Current Stack : ${JSON.stringify(cur)}
-Nest Indices  : ${nest}
-Variables     : ${JSON.stringify(vars)}
-Return Stack  : ${JSON.stringify(ret)}`
+log=_=>stats.innerHTML=`Code          │ ${format=[...code],format[ip-1]=`<span style=background-color:#7ec0ee>${code[ip-1]}</span>`,format.join``}
+IP            │ ${ip}
+Stack1        │ ${JSON.stringify(stack1)}
+Stack2        │ ${JSON.stringify(stack2)}
+Current Stack │ ${JSON.stringify(cur)}
+Nest Indices  │ ${nest}
+Variables     │ ${JSON.stringify(vars)}
+Return Stack  │ ${JSON.stringify(ret)}`
 nsc.oninput=onload=_=>(code=nsc.value,log())
 
 //actual parsing
