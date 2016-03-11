@@ -121,14 +121,14 @@ commands = {
 		return cur.push(+cur.pop().join(_templateObject));
 	},
 	"¨": function _(x) {
-		return x = cur.pop(), cur.push(String.fromCodePoint.apply(String, _toConsumableArray(cur.pop())).split(String.fromCodePoint(x)).map(function (a) {
+		return x = cur.pop(), cur.push(String.fromCodePoint.apply(String, _toConsumableArray(cur.pop())).split(String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]))).map(function (a) {
 			return [].concat(_toConsumableArray(a)).map(function (b) {
 				return b.codePointAt();
 			});
 		}));
 	},
 	"°": function _(x) {
-		return cur.push(cur.join(String.fromCodePoint.apply(String, _toConsumableArray("" + cur.pop()))).split(_templateObject).map(function (x) {
+		return cur.push(cur.join(String.fromCodePoint.apply(String, _toConsumableArray((x = cur.pop()).pop ? x : [x]))).split(_templateObject).map(function (x) {
 			return x.codePointAt();
 		})), cur.splice(cur.length - 2, 1);
 	},
