@@ -225,7 +225,7 @@ commands = {
 		return cur.push(vars[cur.pop()]);
 	},
 	"[": function _(x) {
-		return cur.push(ip), ip = matching_brace();
+		cur.push(ip);ip = matching_brace();
 	},
 	"]": function _(x) {
 		n = ret.length - 3;if (n >= 0 && code[ret[n]] == '#') {
@@ -233,13 +233,13 @@ commands = {
 		}ip = ret.pop();
 	},
 	"!": function _(x) {
-		return ret.push(ip), ip = cur.pop();
+		ret.push(ip);ip = cur.pop();
 	},
 	"?": function _(x) {
-		return f = cur.pop(), t = cur.pop(), ret.push(ip), ip = cur.pop() ? t : f;
+		f = cur.pop(), t = cur.pop();ret.push(ip);ip = cur.pop() ? t : f;
 	},
 	"#": function _(x) {
-		return ret.push(ip, cur.pick(1), cur.pop()), ip = cur.pop();
+		ret.push(ip, cur.pick(1), cur.pop());ip = cur.pop();
 	},
 	"=": function _(x) {
 		return op = cur.pop(), commands[code[++ip]] = function (x) {
