@@ -227,7 +227,7 @@ commands = {
 		return cur.push(ip), ip = matching_brace();
 	},
 	"]": function _(x) {
-		n = ret.length - 3;if (~n && code[ret[n]] == '#') {
+		n = ret.length - 3;if (n >= 0 && code[ret[n]] == '#') {
 			if (cur.pop()) ret.push(ret[n + 1], ret[n + 2]);else ret.pop(), ret.pop();
 		}ip = ret.pop();
 	},
