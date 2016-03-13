@@ -84,7 +84,7 @@ commands={
 }
 
 //good-to-know data for runtime
-log=_=>stats.innerHTML=`Code          │ ${format=[...code.replace(/[\x00-\x1f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))],format[ip]=`<span style=background-color:#7ec0ee>${code[ip]}</span>`,format.join``}
+log=_=>stats.innerHTML=`Code          │ ${format=[...code.replace(/[\x00-\x1f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))],format[ip]=`<span style=background-color:#7ec0ee>${code[ip]||""}</span>`,format.join``}
 IP            │ ${ip}
 Stack1        │ ${JSON.stringify(stack1)}
 Stack2        │ ${JSON.stringify(stack2)}
@@ -99,8 +99,8 @@ parse=_=>{
 	c=code[ip]
 	log()
 	if(commands[c])commands[c]();
-	else if(/\d/.test(c)){c=num=code.substring(ip).match(/\d+/)[0];cur.push(+num);ip+=num.length;return}
-	else if(/\s/.test(c)){ip+=(c=code.substring(ip).match(/\s+/)[0]).length;return}
+	else if(/\d/.test(c)){c=num=code.slice(ip).match(/\d+/)[0];cur.push(+num);ip+=num.length;return}
+	else if(/\s/.test(c)){ip+=(c=code.slice(ip).match(/\s+/)[0]).length;return}
 	else cur.push(c);ip++
 }
 
