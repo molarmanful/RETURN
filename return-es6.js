@@ -75,7 +75,7 @@ commands={
 	":":x=>vars[cur.pop()]=cur.pop(),
 	";":x=>cur.push(vars[cur.pop()]),
 	"[":x=>(cur.push(ip),ip=matching_brace()),
-	"]":x=>{n=ret.length-3;if(~n&&code[ret[n]]=='#'){if(cur.pop())ret.push(ret[n+1],ret[n+2]);else ret.pop(),ret.pop()}ip=ret.pop()},
+	"]":x=>{n=ret.length-3;if(n>=0&&code[ret[n]]=='#'){if(cur.pop())ret.push(ret[n+1],ret[n+2]);else ret.pop(),ret.pop()}ip=ret.pop()},
 	"!":x=>(ret.push(ip),ip=cur.pop()),
 	"?":x=>(f=cur.pop(),t=cur.pop(),ret.push(ip),ip=cur.pop()?t:f),
 	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
