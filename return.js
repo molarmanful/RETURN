@@ -278,7 +278,7 @@ init = function init(_) {
 run = function run(_) {
 	init();if (time.checked) interval = setInterval('ip<code.length?parse():clearInterval(interval)', ms.value || 1);else for (; ip < code.length;) {
 		parse();
-	}
+	}log();
 };
 
 //iso-8859-1 encoding
