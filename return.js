@@ -66,13 +66,19 @@ commands = {
 		return cur.reverse();
 	},
 	"\x04": function _(x) {
-		return a = cur.slice(0), cur.splice(0, cur.length), cur.concat(math.transpose(a));
+		var _cur;
+
+		return a = cur.slice(0), cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray(math.transpose(a)));
 	},
 	"\x05": function _(x) {
-		return a = cur.slice(0), cur.splice(0, cur.length), cur.concat(math.flatten(a));
+		var _cur2;
+
+		return a = cur.slice(0), cur.splice(0, cur.length), (_cur2 = cur).push.apply(_cur2, _toConsumableArray(math.flatten(a)));
 	},
 	"\x06": function _(x) {
-		return a = cur.slice(0), cur.splice(0, cur.length), cur.concat(math.sort(a));
+		var _cur3;
+
+		return a = cur.slice(0), cur.splice(0, cur.length), (_cur3 = cur).push.apply(_cur3, _toConsumableArray(math.sort(a)));
 	},
 	"\x07": function _(x) {
 		return cur.push(cur.length);
@@ -127,9 +133,9 @@ commands = {
 		}));
 	},
 	"°": function _(x) {
-		var _cur;
+		var _cur4;
 
-		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
+		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur4 = cur).push.apply(_cur4, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
 			return String.fromCodePoint.apply(String, _toConsumableArray(x));
 		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))))).map(function (x) {
 			return x.codePointAt();
