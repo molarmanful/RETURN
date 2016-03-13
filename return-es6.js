@@ -75,11 +75,11 @@ commands={
 	"`":x=>cur.push([...inp.value].map(x=>x.codePointAt())),
 	":":x=>vars[cur.pop()]=cur.pop(),
 	";":x=>cur.push(vars[cur.pop()]),
-	"[":x=>(cur.push(ip),ip=matching_brace()),
+	"[":x=>{cur.push(ip);ip=matching_brace()},
 	"]":x=>{n=ret.length-3;if(n>=0&&code[ret[n]]=='#'){if(cur.pop())ret.push(ret[n+1],ret[n+2]);else ret.pop(),ret.pop()}ip=ret.pop()},
-	"!":x=>(ret.push(ip),ip=cur.pop()),
-	"?":x=>(f=cur.pop(),t=cur.pop(),ret.push(ip),ip=cur.pop()?t:f),
-	"#":x=>(ret.push(ip,cur.pick(1),cur.pop()),ip=cur.pop()),
+	"!":x=>{ret.push(ip);ip=cur.pop()},
+	"?":x=>{f=cur.pop(),t=cur.pop();ret.push(ip);ip=cur.pop()?t:f},
+	"#":x=>{ret.push(ip,cur.pick(1),cur.pop());ip=cur.pop()},
 	"=":x=>(op=cur.pop(),commands[code[++ip]]=x=>(ret.push(ip),ip=op))
 }
 
