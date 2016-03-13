@@ -108,7 +108,7 @@ parse=_=>{
 init=_=>(code=nsc.value,ahead=[],ip=0,stack1=[],stack2=[],cur=stack1,curstack=stack1,nest=[],ret=[],vars={},ini=0,out.innerHTML="",console.clear())
 
 //determines either full or timed run
-run=_=>{init();if(time.checked)interval=setInterval('ip<code.length?parse():clearInterval(interval)',ms.value||1);else for(;ip<code.length;)parse()}
+run=_=>{init();if(time.checked)interval=setInterval('ip<code.length?parse():clearInterval(interval)',ms.value||1);else for(;ip<code.length;)parse();log()}
 
 //iso-8859-1 encoding
 encode=x=>[...x].map(a=>('00'+a.charCodeAt().toString(16)).slice(-2)).join` `
