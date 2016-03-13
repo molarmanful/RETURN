@@ -276,7 +276,7 @@ init = function init(_) {
 
 //determines either full or timed run
 run = function run(_) {
-	init();if (time.checked) interval = setInterval('ip<=code.length?parse():(clearInterval(interval),log())', ms.value || 1);else for (; ip < code.length;) {
+	init();if (time.checked) interval = setInterval('ip<code.length?parse():(clearInterval(interval),log())', ms.value || 1);else for (; ip < code.length;) {
 		parse();
 	}log();
 };
