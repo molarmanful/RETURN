@@ -30,12 +30,16 @@ seek = function seek(c) {
 	return !ahead[ip] && (ahead[ip] = ip + code.slice(ip).indexOf(c)), ahead[ip];
 };
 matching_brace = function matching_brace(_) {
-	start = ip;
+	var start = ip;
 	if (!ahead[start]) {
-		for (; ip < code.length;) {
-			c = code[++ip];if (c == ']') break;if (braces[c]) ip = braces[c]();
-		}ahead[start] = ip;
-	}return ahead[start];
+		while (ip < code.length) {
+			c = code[++ip];
+			if (c == ']') break;
+			if (braces[c]) ip = braces[c]();
+		}
+		ahead[start] = ip;
+	}
+	return ahead[start];
 };
 braces = {
 	'"': function _(x) {
