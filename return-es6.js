@@ -13,10 +13,16 @@ Array.prototype.chunk=function(r){var t,n=[],e=0;for(t=this.length/r;t>e;)n[e]=t
 //lookahead stuff
 seek=c=>(!ahead[ip]&&(ahead[ip]=ip+code.slice(ip).indexOf(c)),ahead[ip])
 matching_brace=_=>{
-	start=ip
+	var start=ip
 	if(!ahead[start]){
-		for(;ip<code.length;){c=code[++ip];if(c==']')break;if(braces[c])ip=braces[c]()}ahead[start]=ip
-	}return ahead[start]
+		while(ip<code.length){
+			c=code[++ip]
+			if(c==']')break;
+			if(braces[c])ip=braces[c]();
+		}
+		ahead[start]=ip
+	}
+	return ahead[start]
 }
 braces={
 	'"':x=>seek('"',++ip),
