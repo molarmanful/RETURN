@@ -148,7 +148,7 @@ commands = {
 		var _cur5;
 
 		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur5 = cur).push.apply(_cur5, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
-			return String.fromCodePoint.apply(String, _toConsumableArray(x));
+			return String.fromCodePoint.apply(String, _toConsumableArray(a));
 		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))))).map(function (x) {
 			return x.codePointAt();
 		})));
