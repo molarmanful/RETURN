@@ -81,3 +81,11 @@ Factorial (_requires input number to be on stack_):
 1+1
 [¤][×]#
 ```
+Fibonacci Sequence (_infinite loop_):
+```
+1$[¤¤+2!]!
+```
+Thue-Morse Sequence (_infinite loop_):
+```
+0[{[$¥][[0][1]?]#[$¥][]#%}1!]!
+```
