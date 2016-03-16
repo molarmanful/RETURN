@@ -8,14 +8,20 @@ RETURN uses ISO-8859-1.
 
 ## Commands
 - `0-9`: Push number to stack. You may need to separate series of numbers with whitespace.
-- `0x00`: Find all indices of top item in stack, or return `-1` if not found.
-- `0x01`: Switch parent stacks.
-- `0x02`: Duplicate top _n_ items into a new stack.
-- `0x03`: Reverse stack.
-- `0x04`: Transpose stack.
-- `0x05`: Flatten stack.
-- `0x06`: Sort stack.
-- `0x07`: Get stack length.
+- `\0`: Find all indices of top item in stack, or return `-1` if not found.
+- `\1`: Switch parent stacks.
+- `\2`: Duplicate top _n_ items into a new stack.
+- `\3`: Reverse stack.
+- `\4`: Transpose stack.
+- `\5`: Flatten stack.
+- `\6`: Sort stack.
+- `\7`: Get stack length.
+- `\b`: Concatenate top 2 items.
+- `\t`: Split the stack into chunks.
+- `\n`: Generate a range between top 2 numbers.
+- `\v`: Repeat stack by top item.
+- `\f`: Push to other parent stack.
+- `\r`: Get top item from other parent stack.
 - `{`: Set top item as current stack.
 - `}`: Get out of current stack into surrounding stack.
 - `%`: Pop and discard.
@@ -23,6 +29,7 @@ RETURN uses ISO-8859-1.
 - `¤`: Pick 2nd item from top.
 - `\`: Swap top 2 items.
 - `@`: Pull _nth_ item to top.
+- `ª`: Push item to _nth_ index.
 - `ø`: Duplicate nth item from top.
 - `+-×÷^`: Add/subtract/multiply/pow top 2 items.
 - `÷`: Divmod top 2 items (mod first, then div).
@@ -36,6 +43,10 @@ RETURN uses ISO-8859-1.
 - `>`: Check if top item is greater than 0.
 - `'a`: Push subsequent charcode to stack.
 - `"..."`: Push a series of charcodes to a new stack until another `"` is met.
+- `¦`: Split a number into a stack with its individual digits.
+- `§`: Join a stack into a number.
+- `¨`: Split a stack along top item.
+- `°`: Join a stack with top item.
 - `.`: Output top item.
 - `,`: Output top item as charcode.
 - <code>`</code>: Push entire input into a new stack.
