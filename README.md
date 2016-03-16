@@ -71,6 +71,10 @@ Quine:
 ```
 "$34,,34,,"$34,,34,,
 ```
+Infinite loop:
+```
+~!
+```
 Factorial (_requires input number to be on stack_):
 ```
 1+1
