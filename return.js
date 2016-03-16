@@ -245,7 +245,7 @@ commands = {
 		return cur.push(math.unaryMinus(math.larger(cur.pop() || 0, 0)));
 	},
 	"¥": function _(x) {
-		return cur.push(cur.pop() == null ? -1 : 0);
+		return cur.push(cur.pop() == null ? 0 : -1);
 	},
 	"'": function _(x) {
 		return cur.push(code.codePointAt(++ip));
