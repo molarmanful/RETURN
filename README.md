@@ -24,7 +24,7 @@ RETURN uses ISO-8859-1.
 - `\r`: Get top item from other parent stack.
 - `{`: Set top item as current stack.
 - `}`: Get out of current stack into surrounding stack.
-- `%`: Pop and discard.
+- `%`: Drop top item.
 - `$`: Duplicate top item.
 - `¤`: Pick 2nd item from top.
 - `\`: Swap top 2 items.
