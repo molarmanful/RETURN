@@ -77,6 +77,7 @@ commands={
 	"±":x=>cur.push(math.sign(cur.pop()||0)),
 	"<":x=>cur.push(math.unaryMinus(math.smaller(cur.pop()||0,0))),
 	">":x=>cur.push(math.unaryMinus(math.larger(cur.pop()||0,0))),
+	"¥":x=>cur.push(cur.pop()==null?-1:0),
 	"'":x=>cur.push(code.codePointAt(++ip)),
 	'"':x=>{cur.push([]);for(;code[++ip]!='"';)cur[cur.length-1].push(code.codePointAt(ip))},
 	".":x=>put(cur.pop()),
