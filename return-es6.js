@@ -65,6 +65,7 @@ commands={
 	"×":x=>cur.push(math.multiply(cur.pop()||0,cur.pop()||0)),
 	"÷":x=>(d=cur.pop()||0,n=cur.pop()||0,cur.push(math.mod(n,d),math.fix(math.divide(n,d)))),
 	"^":x=>(d=cur.pop()||0,n=cur.pop()||0,cur.push(math.fix(math.pow(n,d)))),
+	"Þ":x=>(r=cur.pop(),b=cur.pop(),cur.push((f=(x,y)=>x.pop?x.map(a=>f(a,y)):y<2?+'1'.repeat(x):+x.toString(y<11?y:10))(b,r))),
 	"¿":x=>cur.push(math.randomInt(2)),
 	"Ð":x=>cur.push(Date.now()),
 	"«":x=>(s=cur.pop(),cur.push(math.leftShift(cur.pop()||0,s||0))),
