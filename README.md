@@ -46,7 +46,7 @@ RETURN uses ISO-8859-1.
 - `¦`: Split a number into a stack with its individual digits.
 - `§`: Join a stack into a number.
 - `¨`: Split a stack along top item.
-- `°`: Join a stack with top item.
+- `°`: Join stack with top item.
 - `.`: Output top item.
 - `,`: Output top item as charcode.
 - <code>`</code>: Push entire input into a new stack.
