@@ -102,7 +102,12 @@ commands = {
 			return a = [a].concat(_toConsumableArray(cur));
 		}), cur = a);
 	},
-	"\f": function _(x) {},
+	"\f": function _(x) {
+		return (curstack == stack1 ? stack2 : stack1).push(cur.pop());
+	},
+	"\r": function _(x) {
+		return cur.push((curstack == stack1 ? stack2 : stack1).pop());
+	},
 	"{": function _(x) {
 		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
 	},
