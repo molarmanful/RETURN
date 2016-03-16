@@ -59,7 +59,15 @@ RETURN uses ISO-8859-1.
 - `[...]=a`: Define top lambda as operator.
 
 ## Examples
+"Hello, world!":
+```
+"Hello, world!",
+```
+`cat`:
+```
+`,
+```
+Quine:
 ```
 "$34,,34,,"$34,,34,,
 ```
-A non-trivial quine.
