@@ -92,15 +92,17 @@ commands = {
 		return x = cur.pop(), cur.push(((y = cur.pop()).pop ? y : [y]).concat(x));
 	},
 	"\t": function _(x) {
-		return cur = cur.chunk(cur.pop());
+		return a = cur.slice(0), cur.splice(0, cur.length), cur.push(a.chunk(a.pop()));
 	},
 	"\n": function _(x) {
 		return a = cur.pop(), b = cur.pop(), cur.push(math.range(Math.min(a, b), Math.max(a, b))._data);
 	},
 	"\v": function _(x) {
-		return cur = (a = [], [].concat(_toConsumableArray(Array(3))).map(function (x) {
-			return a = [a].concat(_toConsumableArray(cur));
-		}), cur = a);
+		var _cur4;
+
+		return a = [], [].concat(_toConsumableArray(Array(cur.pop()))).map(function (x) {
+			return a = [].concat(_toConsumableArray(a), _toConsumableArray(cur));
+		}), cur.splice(0, cur.length), (_cur4 = cur).push.apply(_cur4, _toConsumableArray(a));
 	},
 	"\f": function _(x) {
 		return (curstack == stack1 ? stack2 : stack1).push(cur.pop());
@@ -143,9 +145,9 @@ commands = {
 		}));
 	},
 	"°": function _(x) {
-		var _cur4;
+		var _cur5;
 
-		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur4 = cur).push.apply(_cur4, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
+		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur5 = cur).push.apply(_cur5, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
 			return String.fromCodePoint.apply(String, _toConsumableArray(x));
 		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))))).map(function (x) {
 			return x.codePointAt();
