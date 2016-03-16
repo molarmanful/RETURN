@@ -31,8 +31,9 @@ RETURN uses ISO-8859-1.
 - `@`: Pull _nth_ item to top.
 - `ª`: Push item to _nth_ index.
 - `ø`: Duplicate nth item from top.
-- `+-×÷^`: Add/subtract/multiply/pow top 2 items.
+- `+-×^`: Add/subtract/multiply/pow top 2 items.
 - `÷`: Divmod top 2 items (mod first, then div).
+- `Þ`: Convert to base 1<=_n_<=10.
 - `¿`: Push random binary number to stack.
 - `Ð`: Push milliseconds elapsed since January 1, 1970 00:00:00 UTC.
 - `&|`: Perform bitwise AND/XOR on top 2 items.
