@@ -21,7 +21,7 @@ RETURN uses ISO-8859-1.
 - `\n`: Generate a range between top 2 numbers.
 - `\v`: Repeat stack by top item.
 - `\f`: Push to other parent stack.
-- `\r`: Get top item from other parent stack.
+- `\x0e`: Get top item from other parent stack.
 - `{`: Set top item as current stack.
 - `}`: Get out of current stack into surrounding stack.
 - `%`: Drop top item.
