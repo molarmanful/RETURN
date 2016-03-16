@@ -71,3 +71,8 @@ Quine:
 ```
 "$34,,34,,"$34,,34,,
 ```
+Factorial (_requires input number to be on stack, unprintable is `0x05`_):
+```
+1+1
+[¤][×]#
+```
