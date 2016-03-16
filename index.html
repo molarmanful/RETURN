@@ -11,7 +11,8 @@ pre{white-space:pre}
 <h1><a href=https://github.com/molarmanful/RETURN target=_blank>RETURN</a> Interpreter</h1>
 <hr>
 <h2>Code</h2>
-<textarea id=nsc></textarea>
+<textarea id=nsc></textarea><br/>
+<button onclick='nsc.insertAtCaret(eval(`"${prompt("TIP: You can use character escape sequences to insert unprintables!")||""}"`))'>Insert String</button>
 <h2>Input</h2>
 <textarea id=inp></textarea><br/>
 <button onclick=run()>Run</button>
