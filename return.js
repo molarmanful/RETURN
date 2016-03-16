@@ -107,7 +107,7 @@ commands = {
 	"\f": function _(x) {
 		return (curstack == stack1 ? stack2 : stack1).push(cur.pop());
 	},
-	"\r": function _(x) {
+	"\x0e": function _(x) {
 		return cur.push((curstack == stack1 ? stack2 : stack1).pop());
 	},
 	"{": function _(x) {
