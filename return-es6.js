@@ -46,7 +46,7 @@ commands={
 	"\n":x=>(a=cur.pop(),b=cur.pop(),cur.push(math.range(Math.min(a,b),Math.max(a,b))._data)),
 	"\v":x=>(a=[],[...Array(cur.pop())].map(x=>a=[...a,...cur]),cur.splice(0,cur.length),cur.push(...a)),
 	"\f":x=>(curstack==stack1?stack2:stack1).push(cur.pop()),
-	"\r":x=>cur.push((curstack==stack1?stack2:stack1).pop()),
+	"\x0e":x=>cur.push((curstack==stack1?stack2:stack1).pop()),
 	"{":x=>(cur=cur[cur.length-1].pop?cur[x=cur.length-1]:(cur[cur.length-1]=[cur[x=cur.length-1]]),nest.push(x)),
 	"}":x=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":x=>cur.pop(),
