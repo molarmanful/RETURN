@@ -21,5 +21,8 @@ pre{white-space:pre}
 <pre id=stats></pre>
 <h2>Output</h2>
 <pre id=out></pre>
-<script src=return.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.5.0/math.min.js></script>
+<script src=return.js></script>
+<script>
+HTMLTextAreaElement.prototype.insertAtCaret=function(t){if(t=t||"",document.selection){this.focus();var e=document.selection.createRange();e.text=t}else if(this.selectionStart||0===this.selectionStart){var s=this.selectionStart,i=this.selectionEnd;this.value=this.value.substring(0,s)+t+this.value.substring(i,this.value.length),this.selectionStart=s+t.length,this.selectionEnd=s+t.length}else this.value+=t}
+</script>
