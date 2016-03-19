@@ -94,7 +94,7 @@ commands={
 }
 
 //good-to-know data for runtime
-log=_=>stats.innerHTML=`Code          │ ${format=[...code.replace(/[\x00-\x1f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))],format[ip]=`<span style=background-color:#7ec0ee>${format[ip]||""}</span>`,format.join``}
+log=_=>stats.innerHTML=`Code          │ ${format=[...code.replace(/[\x00-\x1f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))],format[ip]=`<span style=background-color:#7ec0ee>${format[ip]||""}</span>`,format.join``.replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 IP            │ ${ip}
 Stack1        │ ${JSON.stringify(stack1)}
 Stack2        │ ${JSON.stringify(stack2)}
