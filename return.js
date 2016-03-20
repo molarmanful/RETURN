@@ -180,40 +180,6 @@ commands = {
 	"^": function _(x) {
 		return d = cur.pop() || 0, n = cur.pop() || 0, cur.push(math.fix(math.pow(n, d)));
 	},
-	"Þ": function _(x) {
-		return r = cur.pop(), b = cur.pop(), cur.push((f = function (_f) {
-			function f(_x, _x2) {
-				return _f.apply(this, arguments);
-			}
-
-			f.toString = function () {
-				return _f.toString();
-			};
-
-			return f;
-		}(function (x, y) {
-			return x.pop ? x.map(function (a) {
-				return f(a, y);
-			}) : y < 2 ? +'1'.repeat(x) : +x.toString(y < 11 ? y : 10);
-		}))(b, r));
-	},
-	"þ": function _(x) {
-		return r = cur.pop(), b = cur.pop(), cur.push((f = function (_f2) {
-			function f(_x3, _x4) {
-				return _f2.apply(this, arguments);
-			}
-
-			f.toString = function () {
-				return _f2.toString();
-			};
-
-			return f;
-		}(function (x, y) {
-			return x.pop ? x.map(function (a) {
-				return f(a, y);
-			}) : y < 2 ? ("" + x).length : parseInt(x, y < 11 ? y : 10);
-		}))(b, r));
-	},
 	"¿": function _(x) {
 		return cur.push(math.randomInt(2));
 	},
