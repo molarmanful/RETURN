@@ -12,7 +12,7 @@ pre{white-space:pre}
 <hr>
 <h2>Code</h2>
 <textarea id=nsc></textarea><br/>
-<button onclick='nsc.insertAtCaret(eval(("\""+prompt("TIP: You can use character escape sequences or control character symbols to insert unprintables!")||""+"\"").replace(/[\x00-\x1f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))))'>Insert String</button>
+<button onclick='nsc.insertAtCaret(eval(("\""+(prompt("TIP: You can use character escape sequences or control character symbols to insert unprintables!")||"")+"\"").replace(/[\x00-\x1f]/g,x=>String.fromCharCode(x.charCodeAt()+9216))))'>Insert String</button>
 <h2>Input</h2>
 <textarea id=inp></textarea><br/>
 <button onclick=run()>Run</button>
