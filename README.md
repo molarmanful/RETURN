@@ -78,8 +78,7 @@ Infinite loop:
 ```
 Factorial (_requires input number to be on stack_):
 ```
-1+1
-[¤][×]#
+5 1+1␊␅[¤][×]#
 ```
 Fibonacci Sequence (_infinite loop_):
 ```
@@ -87,5 +86,5 @@ Fibonacci Sequence (_infinite loop_):
 ```
 Thue-Morse Sequence (_infinite loop_):
 ```
-0[{[$¥][[0][1]?]#[$¥][]#%}1!]!
+0[␇␂{[$¥][[0][1]?␌]#[␎$¥][]#%}␅1!]!
 ```
