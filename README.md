@@ -52,6 +52,7 @@ RETURN uses ISO-8859-1.
 - <code>`</code>: Push entire input into a new stack.
 - `:`: Store 2nd item from top to top item.
 - `;`: Get stored value from top item.
+- `¥`: Coerces null to 0, and anything else to -1.
 - `[...]`: Push lambda to stack.
 - `!`: Execute lambda.
 - `[...][...]?`: Executes 2nd lambda from top if 3rd item from top is truthy; otherwise, executes top lambda.
