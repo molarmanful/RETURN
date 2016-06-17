@@ -47,7 +47,7 @@ commands={
 	"\v":cu=>(a=[],[...Array(cu.pop())].map(x=>a=[...a,...cu]),cu.splice(0,cu.length),cu.push(...a)),
 	"\f":cu=>(curstack==stack1?stack2:stack1).push(cu.pop()),
 	"\x0e":cu=>cu.push((curstack==stack1?stack2:stack1).pop()),
-	"{":cu=>(cu=cu[cu.length-1].pop?cu[x=cu.length-1]:(cu[cu.length-1]=[cu[x=cu.length-1]]),nest.push(x)),
+	"{":cu=>(cur=cu[cu.length-1].pop?cu[x=cu.length-1]:(cu[cu.length-1]=[cu[x=cu.length-1]]),nest.push(x)),
 	"}":cu=>{nest.length&&(nest.pop(),cu=curstack,nest.map(x=>cu=cu[x]))},
 	"%":cu=>cu.pop(),
 	"$":cu=>cu.push(cu.pick(0)),
