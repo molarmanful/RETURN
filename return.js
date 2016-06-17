@@ -106,8 +106,8 @@ commands = {
 		return cur = cu[cu.length - 1].pop ? cu[x = cu.length - 1] : cu[cu.length - 1] = [cu[x = cu.length - 1]], nest.push(x);
 	},
 	"}": function _(cu) {
-		nest.length && (nest.pop(), cu = curstack, nest.map(function (x) {
-			return cu = cu[x];
+		nest.length && (nest.pop(), cur = curstack, nest.map(function (x) {
+			return cur = cur[x];
 		}));
 	},
 	"%": function _(cu) {
