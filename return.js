@@ -56,207 +56,202 @@ put = function put(s) {
 
 //functions
 commands = {
-	"\x00": function _(x) {
-		return x = cur.pop(), cur.push(cur.slice(0).reverse().reduce(function (a, b, c) {
+	"\x00": function _(cu) {
+		return x = cu.pop(), cu.push(cu.slice(0).reverse().reduce(function (a, b, c) {
 			return b == x && a.push(c), a;
 		}, []));
 	},
-	"\x01": function _(x) {
-		return curstack = cur = curstack == stack1 ? stack2 : stack1, nest = [];
+	"\x01": function _(cu) {
+		return curstack = cu = curstack == stack1 ? stack2 : stack1, nest = [];
 	},
-	"\x02": function _(x) {
-		return cur.push(cur.slice(cur.length - cur.pop() - 1));
+	"\x02": function _(cu) {
+		return cu.push(cu.slice(cu.length - cu.pop() - 1));
 	},
-	"\x03": function _(x) {
-		return cur.reverse();
+	"\x03": function _(cu) {
+		return cu.reverse();
 	},
-	"\x04": function _(x) {
-		var _cur;
-
-		return a = cur.slice(0), cur.splice(0, cur.length), (_cur = cur).push.apply(_cur, _toConsumableArray(math.transpose(a)));
+	"\x04": function _(cu) {
+		return a = cu.slice(0), cu.splice(0, cu.length), cu.push.apply(cu, _toConsumableArray(math.transpose(a)));
 	},
-	"\x05": function _(x) {
-		var _cur2;
-
-		return a = cur.slice(0), cur.splice(0, cur.length), (_cur2 = cur).push.apply(_cur2, _toConsumableArray(math.flatten(a)));
+	"\x05": function _(cu) {
+		return a = cu.slice(0), cu.splice(0, cu.length), cu.push.apply(cu, _toConsumableArray(math.flatten(a)));
 	},
-	"\x06": function _(x) {
-		var _cur3;
-
-		return a = cur.slice(0), cur.splice(0, cur.length), (_cur3 = cur).push.apply(_cur3, _toConsumableArray(math.sort(a)));
+	"\x06": function _(cu) {
+		return a = cu.slice(0), cu.splice(0, cu.length), cu.push.apply(cu, _toConsumableArray(math.sort(a)));
 	},
-	"\x07": function _(x) {
-		return cur.push(cur.length);
+	"\x07": function _(cu) {
+		return cu.push(cu.length);
 	},
-	"\b": function _(x) {
-		return x = cur.pop(), cur.push(((y = cur.pop()).pop ? y : [y]).concat(x));
+	"\b": function _(cu) {
+		return x = cu.pop(), cu.push(((y = cu.pop()).pop ? y : [y]).concat(x));
 	},
-	"\t": function _(x) {
-		return a = cur.slice(0), cur.splice(0, cur.length), cur.push(a.chunk(a.pop()));
+	"\t": function _(cu) {
+		return a = cu.slice(0), cu.splice(0, cu.length), cu.push(a.chunk(a.pop()));
 	},
-	"\n": function _(x) {
-		return a = cur.pop(), b = cur.pop(), cur.push(math.range(Math.min(a, b), Math.max(a, b))._data);
+	"\n": function _(cu) {
+		return a = cu.pop(), b = cu.pop(), cu.push(math.range(Math.min(a, b), Math.max(a, b))._data);
 	},
-	"\v": function _(x) {
-		var _cur4;
-
-		return a = [], [].concat(_toConsumableArray(Array(cur.pop()))).map(function (x) {
-			return a = [].concat(_toConsumableArray(a), _toConsumableArray(cur));
-		}), cur.splice(0, cur.length), (_cur4 = cur).push.apply(_cur4, _toConsumableArray(a));
+	"\v": function _(cu) {
+		return a = [], [].concat(_toConsumableArray(Array(cu.pop()))).map(function (x) {
+			return a = [].concat(_toConsumableArray(a), _toConsumableArray(cu));
+		}), cu.splice(0, cu.length), cu.push.apply(cu, _toConsumableArray(a));
 	},
-	"\f": function _(x) {
-		return (curstack == stack1 ? stack2 : stack1).push(cur.pop());
+	"\f": function _(cu) {
+		return (curstack == stack1 ? stack2 : stack1).push(cu.pop());
 	},
-	"\x0e": function _(x) {
-		return cur.push((curstack == stack1 ? stack2 : stack1).pop());
+	"\x0e": function _(cu) {
+		return cu.push((curstack == stack1 ? stack2 : stack1).pop());
 	},
-	"{": function _(x) {
-		return cur = cur[cur.length - 1].pop ? cur[x = cur.length - 1] : cur[cur.length - 1] = [cur[x = cur.length - 1]], nest.push(x);
+	"{": function _(cu) {
+		return cu = cu[cu.length - 1].pop ? cu[x = cu.length - 1] : cu[cu.length - 1] = [cu[x = cu.length - 1]], nest.push(x);
 	},
-	"}": function _(x) {
-		nest.length && (nest.pop(), cur = curstack, nest.map(function (x) {
-			return cur = cur[x];
+	"}": function _(cu) {
+		nest.length && (nest.pop(), cu = curstack, nest.map(function (x) {
+			return cu = cu[x];
 		}));
 	},
-	"%": function _(x) {
-		return cur.pop();
+	"%": function _(cu) {
+		return cu.pop();
 	},
-	"$": function $(x) {
-		return cur.push(cur.pick(0));
+	"$": function $(cu) {
+		return cu.push(cu.pick(0));
 	},
-	"\\": function _(x) {
+	"\\": function _(cu) {
 		var _ref;
 
-		return _ref = [cur[cur.length - 2], cur[cur.length - 1]], cur[cur.length - 1] = _ref[0], cur[cur.length - 2] = _ref[1], _ref;
+		return _ref = [cu[cu.length - 2], cu[cu.length - 1]], cu[cu.length - 1] = _ref[0], cu[cu.length - 2] = _ref[1], _ref;
 	},
-	"¦": function _(x) {
-		return cur.push(cur.pop().toString().split(_templateObject).map(function (x) {
+	"¦": function _(cu) {
+		return cu.push(cu.pop().toString().split(_templateObject).map(function (x) {
 			return +x;
 		}));
 	},
-	"§": function _(x) {
-		return cur.push(+cur.pop().join(_templateObject));
+	"§": function _(cu) {
+		return cu.push(+cu.pop().join(_templateObject));
 	},
-	"¨": function _(x) {
-		return x = cur.pop(), cur.push(String.fromCodePoint.apply(String, _toConsumableArray(cur.pop())).split(String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]))).map(function (a) {
+	"¨": function _(cu) {
+		return x = cu.pop(), cu.push(String.fromCodePoint.apply(String, _toConsumableArray(cu.pop())).split(String.fromCodePoint.apply(String, _toConsumableArray(x.pop ? x : [x]))).map(function (a) {
 			return [].concat(_toConsumableArray(a)).map(function (b) {
 				return b.codePointAt();
 			});
 		}));
 	},
-	"°": function _(x) {
-		var _cur5;
-
-		return a = cur.pop(), b = cur.slice(0), cur.splice(0, cur.length), (_cur5 = cur).push.apply(_cur5, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
+	"°": function _(cu) {
+		return a = cu.pop(), b = cu.slice(0), cu.splice(0, cu.length), cu.push.apply(cu, _toConsumableArray([].concat(_toConsumableArray(b.map(function (x) {
 			return String.fromCodePoint.apply(String, _toConsumableArray(x));
 		}).join(String.fromCodePoint.apply(String, _toConsumableArray(a.pop ? a : [a]))))).map(function (x) {
 			return x.codePointAt();
 		})));
 	},
-	"¤": function _(x) {
-		return cur.push(cur.pick(1));
+	"¤": function _(cu) {
+		return cu.push(cu.pick(1));
 	},
-	"@": function _(x) {
-		return cur.push(cur.pick(x = cur.pop())), cur.splice(cur.length - x - 2, 1);
+	"@": function _(cu) {
+		return cu.push(cu.pick(x = cu.pop())), cu.splice(cu.length - x - 2, 1);
 	},
-	"ª": function _(x) {
-		return cur.splice(cur.length - cur.pop() - 2, 0, cur.pop());
+	"ª": function _(cu) {
+		return cu.splice(cu.length - cu.pop() - 2, 0, cu.pop());
 	},
-	"ø": function _(x) {
-		return cur.push(cur.pick(cur.pop()));
+	"ø": function _(cu) {
+		return cu.push(cu.pick(cu.pop()));
 	},
-	"+": function _(x) {
-		return cur.push(math.add(cur.pop() || 0, cur.pop() || 0));
+	"+": function _(cu) {
+		return cu.push(math.add(cu.pop() || 0, cu.pop() || 0));
 	},
-	"-": function _(x) {
-		return a = cur.pop() || 0, b = cur.pop() || 0, cur.push(math.subtract(b, a));
+	"-": function _(cu) {
+		return a = cu.pop() || 0, b = cu.pop() || 0, cu.push(math.subtract(b, a));
 	},
-	"×": function _(x) {
-		return cur.push(math.multiply(cur.pop() || 0, cur.pop() || 0));
+	"×": function _(cu) {
+		return cu.push(math.multiply(cu.pop() || 0, cu.pop() || 0));
 	},
-	"÷": function _(x) {
-		return d = cur.pop() || 0, n = cur.pop() || 0, cur.push(math.mod(n, d), math.fix(math.divide(n, d)));
+	"÷": function _(cu) {
+		return d = cu.pop() || 0, n = cu.pop() || 0, cu.push(math.mod(n, d), math.fix(math.divide(n, d)));
 	},
-	"^": function _(x) {
-		return d = cur.pop() || 0, n = cur.pop() || 0, cur.push(math.fix(math.pow(n, d)));
+	"^": function _(cu) {
+		return d = cu.pop() || 0, n = cu.pop() || 0, cu.push(math.fix(math.pow(n, d)));
 	},
-	"¿": function _(x) {
-		return cur.push(math.randomInt(2));
+	"¿": function _(cu) {
+		return cu.push(math.randomInt(2));
 	},
-	"Ð": function _(x) {
-		return cur.push(Date.now());
+	"Ð": function _(cu) {
+		return cu.push(Date.now());
 	},
-	"«": function _(x) {
-		return s = cur.pop(), cur.push(math.leftShift(cur.pop() || 0, s || 0));
+	"«": function _(cu) {
+		return s = cu.pop(), cu.push(math.leftShift(cu.pop() || 0, s || 0));
 	},
-	"»": function _(x) {
-		return s = cur.pop(), cur.push(math.rightLogShift(cur.pop() || 0, s || 0));
+	"»": function _(cu) {
+		return s = cu.pop(), cu.push(math.rightLogShift(cu.pop() || 0, s || 0));
 	},
-	"&": function _(x) {
-		return cur.push(math.bitAnd(cur.pop() || 0, cur.pop() || 0));
+	"&": function _(cu) {
+		return cu.push(math.bitAnd(cu.pop() || 0, cu.pop() || 0));
 	},
-	"|": function _(x) {
-		return cur.push(math.bitXor(cur.pop() || 0, cur.pop() || 0));
+	"|": function _(cu) {
+		return cu.push(math.bitXor(cu.pop() || 0, cu.pop() || 0));
 	},
-	"~": function _(x) {
-		return cur.push(math.bitNot(cur.pop() || 0));
+	"~": function _(cu) {
+		return cu.push(math.bitNot(cu.pop() || 0));
 	},
-	"±": function _(x) {
-		return cur.push(math.sign(cur.pop() || 0));
+	"±": function _(cu) {
+		return cu.push(math.sign(cu.pop() || 0));
 	},
-	"<": function _(x) {
-		return cur.push(math.unaryMinus(math.smaller(cur.pop() || 0, 0)));
+	"<": function _(cu) {
+		return cu.push(math.unaryMinus(math.smaller(cu.pop() || 0, 0)));
 	},
-	">": function _(x) {
-		return cur.push(math.unaryMinus(math.larger(cur.pop() || 0, 0)));
+	">": function _(cu) {
+		return cu.push(math.unaryMinus(math.larger(cu.pop() || 0, 0)));
 	},
-	"¥": function _(x) {
-		return cur.push(cur.pop() == null ? 0 : -1);
+	"¥": function _(cu) {
+		return cu.push(cu.pop() == null ? 0 : -1);
 	},
-	"'": function _(x) {
-		return cur.push(code.codePointAt(++ip));
+	"'": function _(cu) {
+		return cu.push(code.codePointAt(++ip));
 	},
-	'"': function _(x) {
-		cur.push([]);for (; code[++ip] != '"';) {
-			cur[cur.length - 1].push(code.codePointAt(ip));
+	"£": function _(cu) {
+		return a = cu.slice(0), cu.splice(0, cu.length), m = code[++ip], cu.push.apply(cu, _toConsumableArray(a.map(function (x) {
+			return commands[m]([x]);
+		})));
+	},
+	'"': function _(cu) {
+		cu.push([]);for (; code[++ip] != '"';) {
+			cu[cu.length - 1].push(code.codePointAt(ip));
 		}
 	},
-	".": function _(x) {
-		return put(cur.pop());
+	".": function _(cu) {
+		return put(cu.pop());
 	},
-	",": function _(x) {
-		return put(String.fromCodePoint.apply(String, _toConsumableArray((x = cur.pop()).pop ? x : [x])));
+	",": function _(cu) {
+		return put(String.fromCodePoint.apply(String, _toConsumableArray((x = cu.pop()).pop ? x : [x])));
 	},
-	"`": function _(x) {
-		return cur.push([].concat(_toConsumableArray(inp.value)).map(function (x) {
+	"`": function _(cu) {
+		return cu.push([].concat(_toConsumableArray(inp.value)).map(function (x) {
 			return x.codePointAt();
 		}));
 	},
-	":": function _(x) {
-		return vars[cur.pop()] = cur.pop();
+	":": function _(cu) {
+		return vars[cu.pop()] = cu.pop();
 	},
-	";": function _(x) {
-		return cur.push(vars[cur.pop()]);
+	";": function _(cu) {
+		return cu.push(vars[cu.pop()]);
 	},
-	"[": function _(x) {
-		cur.push(ip);ip = matching_brace();
+	"[": function _(cu) {
+		cu.push(ip);ip = matching_brace();
 	},
-	"]": function _(x) {
+	"]": function _(cu) {
 		n = ret.length - 3;if (n >= 0 && code[ret[n]] == '#') {
-			if (cur.pop()) ret.push(ret[n + 1], ret[n + 2]);else ret.pop(), ret.pop();
+			if (cu.pop()) ret.push(ret[n + 1], ret[n + 2]);else ret.pop(), ret.pop();
 		}ip = ret.pop();
 	},
-	"!": function _(x) {
-		ret.push(ip);ip = cur.pop();
+	"!": function _(cu) {
+		ret.push(ip);ip = cu.pop();
 	},
-	"?": function _(x) {
-		f = cur.pop(), t = cur.pop();ret.push(ip);ip = cur.pop() ? t : f;
+	"?": function _(cu) {
+		f = cu.pop(), t = cu.pop();ret.push(ip);ip = cu.pop() ? t : f;
 	},
-	"#": function _(x) {
-		ret.push(ip, cur.pick(1), cur.pop());ip = cur.pop();
+	"#": function _(cu) {
+		ret.push(ip, cu.pick(1), cu.pop());ip = cu.pop();
 	},
-	"=": function _(x) {
-		return op = cur.pop(), commands[code[++ip]] = function (x) {
+	"=": function _(cu) {
+		return op = cu.pop(), commands[code[++ip]] = function (x) {
 			return ret.push(ip), ip = op;
 		};
 	}
@@ -278,7 +273,7 @@ nsc.oninput = onload = function onload(_) {
 parse = function parse(_) {
 	c = code[ip];
 	log();
-	if (commands[c]) commands[c]();else if (/\d/.test(c)) {
+	if (commands[c]) commands[c](cur);else if (/\d/.test(c)) {
 		c = num = code.slice(ip).match(/\d+/)[0];cur.push(+num);ip += num.length;return;
 	} else if (/\s/.test(c)) {
 		ip += (c = code.slice(ip).match(/\s+/)[0]).length;return;
