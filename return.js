@@ -1,3 +1,5 @@
+'use strict';
+
 var _templateObject = _taggedTemplateLiteral([''], ['']),
     _templateObject2 = _taggedTemplateLiteral([' '], [' ']);
 
@@ -103,7 +105,7 @@ commands = {
 		return cu.push((curstack == stack1 ? stack2 : stack1).pop());
 	},
 	"{": function _(cu) {
-		return cu = cu[cu.length - 1].pop ? cu[x = cu.length - 1] : cu[cu.length - 1] = [cu[x = cu.length - 1]], nest.push(x);
+		return cur = cu[cu.length - 1].pop ? cu[x = cu.length - 1] : cu[cu.length - 1] = [cu[x = cu.length - 1]], nest.push(x);
 	},
 	"}": function _(cu) {
 		nest.length && (nest.pop(), cu = curstack, nest.map(function (x) {
