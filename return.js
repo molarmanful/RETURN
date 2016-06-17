@@ -207,9 +207,11 @@ commands = {
 		return cu.push(code.codePointAt(++ip));
 	},
 	"£": function _(cu) {
-		return a = cu.slice(0), cu.splice(0, cu.length), m = code[++ip], cu.push.apply(cu, _toConsumableArray(a.map(function (x) {
-			return commands[m]([x]);
-		})));
+		return a = cu.slice(0), cu.splice(0, cu.length), m = code[++ip], res = [], cu.push.apply(cu, _toConsumableArray((a.map(function (x) {
+			var _res;
+
+			return commands[m](z = [x]), (_res = res).push.apply(_res, _toConsumableArray(z));
+		}), res)));
 	},
 	'"': function _(cu) {
 		cu.push([]);for (; code[++ip] != '"';) {
