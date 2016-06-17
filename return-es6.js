@@ -77,7 +77,7 @@ commands={
 	">":cu=>cu.push(math.unaryMinus(math.larger(cu.pop()||0,0))),
 	"¥":cu=>cu.push(cu.pop()==null?0:-1),
 	"'":cu=>cu.push(code.codePointAt(++ip)),
-	"£":cu=>(a=cu.slice(0),cu.splice(0,cu.length),m=code[++ip],cu.push(...a.map(x=>commands[m]([x])))),
+	"£":cu=>(a=cu.slice(0),cu.splice(0,cu.length),m=code[++ip],res=[],cu.push(...(a.map(x=>(commands[m](z=[x]),res.push(...z))),res))),
 	'"':cu=>{cu.push([]);for(;code[++ip]!='"';)cu[cu.length-1].push(code.codePointAt(ip))},
 	".":cu=>put(cu.pop()),
 	",":cu=>put(String.fromCodePoint(...(x=cu.pop()).pop?x:[x])),
