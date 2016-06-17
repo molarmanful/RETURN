@@ -48,7 +48,7 @@ commands={
 	"\f":cu=>(curstack==stack1?stack2:stack1).push(cu.pop()),
 	"\x0e":cu=>cu.push((curstack==stack1?stack2:stack1).pop()),
 	"{":cu=>(cur=cu[cu.length-1].pop?cu[x=cu.length-1]:(cu[cu.length-1]=[cu[x=cu.length-1]]),nest.push(x)),
-	"}":cu=>{nest.length&&(nest.pop(),cu=curstack,nest.map(x=>cu=cu[x]))},
+	"}":cu=>{nest.length&&(nest.pop(),cur=curstack,nest.map(x=>cur=cur[x]))},
 	"%":cu=>cu.pop(),
 	"$":cu=>cu.push(cu.pick(0)),
 	"\\":cu=>[cu[cu.length-1],cu[cu.length-2]]=[cu[cu.length-2],cu[cu.length-1]],
